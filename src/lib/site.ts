@@ -15,7 +15,7 @@ export const siteConfig = {
   contact: {
     phone: "+61400000000", // TODO: set real number
     phoneDisplay: "0400 000 000",
-    email: "hello@clicksmith.com.au",
+    email: "discover@clicksmith.com.au",
   },
   social: {
     instagram: "https://instagram.com/clicksmith.au",
