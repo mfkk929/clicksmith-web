@@ -3,28 +3,28 @@
 /* ClickSmith — Design Tokens (source: design-system/MASTER.md) */
 :root {
   /* Core */
-  --color-primary: #0f172a;
-  --color-primary-hover: #1e293b;
+  --color-primary: #0a0a0a;
+  --color-primary-hover: #262626;
   --color-on-primary: #ffffff;
 
-  --color-secondary: #334155;
+  --color-secondary: #404040;
 
-  /* Action — tradie-punch orange, CTAs only */
+  /* Action — single accent for CTAs */
   --color-action: #f97316;
   --color-action-hover: #ea580c;
-  --color-action-strong: #c2410c; /* body-text contrast fallback */
+  --color-action-strong: #c2410c;
   --color-on-action: #ffffff;
 
-  /* Trust blue — secondary info */
-  --color-info: #0369a1;
+  /* Informational / link accent */
+  --color-info: #2563eb;
 
   /* Surfaces */
-  --color-background: #f8fafc;
+  --color-background: #fafafa;
   --color-surface: #ffffff;
-  --color-foreground: #020617;
-  --color-muted: #e8ecf1;
-  --color-muted-foreground: #475569;
-  --color-border: #e2e8f0;
+  --color-foreground: #0a0a0a;
+  --color-muted: #f4f4f5;
+  --color-muted-foreground: #525252;
+  --color-border: #e5e5e5;
 
   /* Semantic */
   --color-success: #16a34a;
@@ -55,13 +55,13 @@
   --color-destructive: var(--color-destructive);
   --color-ring: var(--color-ring);
 
-  /* Fonts (CSS vars set in layout.tsx via next/font) */
-  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  /* Fonts — values set in layout.tsx via next/font */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geist), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Radius */
-  --radius-lg: 0.75rem; /* 12px — cards */
-  --radius-md: 0.5rem;  /* 8px  — buttons, inputs */
+  --radius-lg: 0.75rem;
+  --radius-md: 0.5rem;
 }
 
 /* Base element styles */
@@ -75,12 +75,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* Headings — font/weight/leading set here, color is per-section (Tailwind decides). */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
-  font-weight: 700;
-  line-height: 1.15;
-  color: var(--color-primary);
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
 /* Focus ring — always visible on keyboard nav */
