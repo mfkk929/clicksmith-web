@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Open_Sans } from "next/font/google";
 import { siteConfig } from "@/lib/site";
+import { Header } from "@/components/layout/header";
+import { Footer } from "@/components/layout/footer";
+import { SiteJsonLd } from "@/components/json-ld";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -88,7 +91,10 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <Header />
         {children}
+        <Footer />
+        <SiteJsonLd />
       </body>
     </html>
   );
