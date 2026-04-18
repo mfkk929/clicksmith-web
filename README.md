@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ClickSmith Web
 
-## Getting Started
+Marketing agency website for ClickSmith — lead-generating sites, local SEO, and Google Ads for Australian tradies. Also the storefront for ClickSmith DIY playbooks.
 
-First, run the development server:
+**Stack:** Next.js 16 (App Router) · React 19 · TypeScript · Tailwind v4 · Supabase · Vercel
+
+**Design system:** source of truth lives in `../design-system/MASTER.md`. Page-specific overrides in `../design-system/pages/`.
+
+---
+
+## Local development
 
 ```bash
+# Install
+npm install
+
+# Copy env template and fill in values
+cp .env.example .env.local
+
+# Dev server on http://localhost:3000
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Production build (catches TS/build errors)
+npm run build
+
+# Lint
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Project structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+  app/
+    layout.tsx        # Root layout: fonts, metadata, OG tags, skip-link
+    page.tsx          # Homepage
+    globals.css       # Design tokens (see MASTER.md)
+    robots.ts         # /robots.txt generator
+    sitemap.ts        # /sitemap.xml generator — add new routes here
+  components/
+    ui/               # Primitives (Button, Input, ...)
+    sections/         # Page sections (Hero, FeatureGrid, ...)
+  lib/
+    site.ts           # Site config (name, URL, contact)
+    utils.ts          # cn() helper
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Adding a new page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Create `src/app/<route>/page.tsx`
+2. Export a `Metadata` object (title <60 chars, description <155 chars)
+3. **Add the URL to `src/app/sitemap.ts`** — otherwise it won't be discoverable
+4. Wire any new CTA into analytics (see `DEPLOY.md`)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Push to `main` → Vercel auto-deploys. Full post-push checklist in [DEPLOY.md](./DEPLOY.md) — follow it every launch to avoid the CoastalCo-style "built but not indexed" problem.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Performance targets
+
+- Lighthouse: Performance ≥95, SEO 100, Accessibility ≥95
+- LCP <2.0s, INP <200ms, CLS <0.1
+- First-load JS <120KB on homepage
+
+Run `npm run build` + `npm run start` and check Lighthouse on mobile before every release.
