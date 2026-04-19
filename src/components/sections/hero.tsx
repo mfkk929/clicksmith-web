@@ -1,18 +1,19 @@
 import Link from "next/link";
 import { ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AuditForm } from "@/components/forms/audit-form";
 import { siteConfig } from "@/lib/site";
 
 /**
  * Homepage hero.
  * Design rules: `design-system/pages/homepage.md` §1 Hero.
- * One primary CTA (orange), one secondary (ghost). Never compete.
+ * Right column is the primary lead-capture form (replaces the old photo slot).
  */
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-background)] pt-20 pb-24 md:pt-28 md:pb-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           {/* Left column — copy */}
           <div>
             {/* Eyebrow */}
@@ -21,7 +22,7 @@ export function Hero() {
               Marketing for Australian tradies
             </p>
 
-            {/* H1 — the LCP element; no image above it */}
+            {/* H1 — the LCP element */}
             <h1 className="text-[2.5rem] leading-[1.05] md:text-[3.5rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-primary)]">
               More tradie jobs on your calendar.{" "}
               <span className="text-[var(--color-action)]">
@@ -36,15 +37,16 @@ export function Hero() {
               of mouth.
             </p>
 
-            {/* CTAs — one primary, one ghost. Never compete. */}
+            {/* CTAs — on mobile, primary scrolls to the form further down.
+                On desktop the form is visible beside this, so primary is softened. */}
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link href="/audit">
+              <a href="#audit-form" className="lg:hidden">
                 <Button variant="action" size="lg" className="w-full sm:w-auto">
                   Get my free lead audit
                   <ArrowRight className="h-5 w-5" aria-hidden="true" />
                 </Button>
-              </Link>
-              <Link href="/playbooks" className="sm:ml-2">
+              </a>
+              <Link href="/playbooks">
                 <Button variant="ghost" size="lg" className="w-full sm:w-auto">
                   Or grab the DIY playbook
                 </Button>
@@ -72,7 +74,7 @@ export function Hero() {
               </li>
             </ul>
 
-            {/* Mobile-friendly phone fallback */}
+            {/* Phone fallback */}
             <p className="mt-5 text-sm text-[var(--color-muted-foreground)]">
               Prefer to talk?{" "}
               <a
@@ -87,24 +89,9 @@ export function Hero() {
             </p>
           </div>
 
-          {/*
-            Right column — hero photo slot.
-            TODO: Drop a real tradie photo at /public/hero/tradie-photo.jpg
-            then replace the empty slot below with:
-              <Image
-                src="/hero/tradie-photo.jpg"
-                alt="Tradie checking job leads on phone"
-                fill
-                priority
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="object-cover"
-              />
-          */}
-          <div className="relative hidden lg:block">
-            <div
-              aria-hidden="true"
-              className="relative aspect-[4/5] w-full rounded-2xl border border-dashed border-[var(--color-border)] bg-[var(--color-muted)]"
-            />
+          {/* Right column — audit form (primary lead-capture) */}
+          <div className="relative">
+            <AuditForm />
           </div>
         </div>
       </div>
