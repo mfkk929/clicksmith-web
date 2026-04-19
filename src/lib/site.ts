@@ -13,8 +13,8 @@ export const siteConfig = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.clicksmith.com.au",
   locale: "en_AU",
   contact: {
-    phone: "+61400000000", // TODO: set real number
-    phoneDisplay: "0400 000 000",
+    phone: "+61493531857",
+    phoneDisplay: "0493 531 857",
     email: "discover@clicksmith.com.au",
   },
   social: {

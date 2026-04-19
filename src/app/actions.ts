@@ -1,27 +1,24 @@
 "use server";
 
+import { sendAuditEmail } from "@/lib/email";
+
 /**
  * Server actions for the ClickSmith site.
  *
- * Current state: audit form validates input server-side and logs the submission
- * to the runtime console (visible in Vercel -> Deployments -> Logs). It does NOT
- * yet persist to a database or send an email.
+ * Audit form flow:
+ *   1. Validate input server-side.
+ *   2. Always console.log the submission (permanent backup, visible in
+ *      Vercel > Deployments > Logs — never lose a lead).
+ *   3. Send email notification via Hostinger SMTP. Needs these env vars:
+ *        SMTP_HOST   smtp.hostinger.com
+ *        SMTP_PORT   465
+ *        SMTP_USER   discover@clicksmith.com.au
+ *        SMTP_PASS   <hostinger mailbox password>
+ *        SMTP_TO     discover@clicksmith.com.au (optional; defaults to SMTP_USER)
+ *      If vars are missing or SMTP fails, we still show success to the user
+ *      and rely on the console log so leads are never silently dropped.
  *
- * To wire real persistence + email alerts, do these three things (in order):
- *   1. Create a Supabase project. Add a table:
- *        create table audit_requests (
- *          id uuid primary key default gen_random_uuid(),
- *          created_at timestamptz default now(),
- *          name text not null,
- *          phone text not null,
- *          trade text not null,
- *          suburb text not null,
- *          ip text,
- *          user_agent text
- *        );
- *      Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY in Vercel env vars.
- *   2. Set up Resend, verify clicksmith.com.au sending domain, add RESEND_API_KEY.
- *   3. Un-stub the two TODO blocks below (persistSubmission + notifyByEmail).
+ * Future: persist to Supabase for long-term storage + dashboard. Not wired yet.
  */
 
 export type AuditFormState = {
@@ -97,12 +94,23 @@ export async function submitAudit(
     };
   }
 
-  // TODO: persist to Supabase once SUPABASE_URL/SUPABASE_SERVICE_ROLE_KEY are set.
-  // TODO: send notification email via Resend once RESEND_API_KEY is set.
-  console.log("[audit-form-submission]", {
+  const submission = {
     ...result.data,
     submittedAt: new Date().toISOString(),
-  });
+  };
+
+  // Always log — permanent backup. Visible in Vercel -> Deployments -> Logs.
+  console.log("[audit-form-submission]", submission);
+
+  // Try SMTP delivery. Failure is non-fatal; the user still sees success,
+  // and the submission survives in the console log above.
+  const mailResult = await sendAuditEmail(submission);
+  if (!mailResult.delivered) {
+    console.warn("[audit-email-not-delivered]", {
+      reason: mailResult.reason,
+      submission,
+    });
+  }
 
   return {
     status: "success",
