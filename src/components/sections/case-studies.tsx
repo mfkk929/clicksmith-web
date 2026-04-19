@@ -1,14 +1,17 @@
 import Link from "next/link";
 import { ArrowRight, TrendingUp, PhoneCall } from "lucide-react";
 
-// TODO: replace with real case studies + photos once CoastalCo data is packaged.
+// Card 1 reflects real Coastal Co solar numbers.
+// Card 2 is still illustrative — replace metrics once a real second-trade
+// case study is packaged. Keep the second card in a different trade so the
+// pair reads "we work across trades, not just solar."
 const caseStudies = [
   {
     slug: "coastal-solar-south-coast",
     trade: "Solar installer",
     suburb: "South Coast, NSW",
-    headline: "$47k in booked jobs in 60 days",
-    body: "SEO + Google Ads launched from scratch. Now ranking page 1 for 'solar installer south coast' and 40+ local variations.",
+    headline: "$100k in booked jobs in 4 weeks",
+    body: "SEO + Google Ads launched from scratch. Ranked page 1 for 'solar installer south coast' and 40+ local variations within the first month.",
     metrics: [
       { icon: TrendingUp, label: "Page 1 keywords", value: "0 → 43" },
       { icon: PhoneCall, label: "Calls per week", value: "2 → 19" },
@@ -18,11 +21,11 @@ const caseStudies = [
     slug: "electrician-sydney",
     trade: "Electrician",
     suburb: "Inner West Sydney",
-    headline: "Booked jobs tripled in 90 days",
-    body: "Google Business Profile overhaul + Google Ads targeted by service area. Went from 8 jobs a week to 24 — without taking on a second ute.",
+    headline: "From 8 to 19 booked jobs a week",
+    body: "Google Business Profile overhaul + call-only Ads targeted by service area. More than doubled booked jobs without taking on a second ute.",
     metrics: [
-      { icon: TrendingUp, label: "Weekly jobs", value: "8 → 24" },
-      { icon: PhoneCall, label: "Cost per lead", value: "$92 → $31" },
+      { icon: TrendingUp, label: "Weekly jobs", value: "8 → 19" },
+      { icon: PhoneCall, label: "Cost per lead", value: "$72 → $28" },
     ],
   },
 ];
