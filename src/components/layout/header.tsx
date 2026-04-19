@@ -6,7 +6,7 @@ import { Logo } from "./logo";
 const navItems = [
   { href: "/services", label: "Services" },
   { href: "/trades", label: "Trades" },
-  { href: "/case-studies", label: "Results" },
+  { href: "/learn", label: "Learn" },
   { href: "/playbooks", label: "Playbooks" },
   { href: "/about", label: "About" },
 ];

@@ -47,7 +47,7 @@ const footerNav = {
     title: "Company",
     links: [
       { href: "/about", label: "About" },
-      { href: "/case-studies", label: "Case studies" },
+      { href: "/learn", label: "Learning hub" },
       { href: "/playbooks", label: "Playbooks" },
       { href: "/contact", label: "Contact" },
     ],
