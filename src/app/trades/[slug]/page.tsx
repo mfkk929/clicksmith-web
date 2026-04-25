@@ -746,4 +746,48 @@ export default async function TradePage({
                     <h3 className="text-lg font-bold text-[var(--color-primary)] group-hover:text-[var(--color-action)]">
                       Marketing for {r.plural}
                     </h3>
-                    <p className="mt-2 text-sm text-[var(--color-muted
+                    <p className="mt-2 text-sm text-[var(--color-muted-foreground)]">
+                      {r.metaDescription.split(".")[0]}.
+                    </p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* ── 12. FINAL CTA ────────────────────────────────── */}
+      <section
+        aria-labelledby="cta-title"
+        className="bg-[var(--color-primary)] py-20 md:py-28"
+      >
+        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
+          <h2
+            id="cta-title"
+            className="text-3xl font-bold text-[var(--color-on-primary)] md:text-5xl"
+          >
+            Ready to fill your {trade.singular.toLowerCase()} pipeline?
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-on-primary)]/80">
+            Book a free 30-minute marketing audit. We'll review your funnel, GBP, ads, and website — and tell you exactly where the leakage is. No pitch, no pressure.
+          </p>
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <Link href="/audit">
+              <Button variant="action" size="lg">
+                Book your free audit
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <Link href={`tel:${siteConfig.contact.phone}`}>
+              <Button variant="secondary" size="lg">
+                <Phone className="mr-2 h-4 w-4" />
+                Call {siteConfig.contact.phoneDisplay}
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

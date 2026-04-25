@@ -1531,4 +1531,116 @@ export const trades: Trade[] = [
       {
         channel: "GBP + local SEO",
         priority: "Primary",
-        why: "Same-day intent wins on top-3 GBP rankings
+        why: "Same-day intent wins on top-3 GBP rankings. The single biggest lever.",
+      },
+      {
+        channel: "Google Ads + Local Services Ads",
+        priority: "Primary",
+        why: "'Cockroach treatment [suburb]' and 'termite inspection [city]' convert well. LSA lifts conversion further.",
+        benchmark: "AU pest Google Ads typically $30-80 CPL at 8-15% conversion; LSA $20-50 CPL at 30-40% conversion.",
+      },
+      {
+        channel: "Recurring-treatment email engine",
+        priority: "High",
+        why: "Past customers are the cheapest revenue source. Annual reminders typically convert at 35-45%.",
+      },
+      {
+        channel: "Real estate + property manager outreach",
+        priority: "High",
+        why: "Pre-sale termite inspections + property manager contracts = predictable, recurring revenue.",
+      },
+      {
+        channel: "Facebook ads (seasonal pest awareness)",
+        priority: "Supporting",
+        why: "Spring rats, summer cockroaches, autumn termites — seasonal pest content drives targeted spikes.",
+      },
+    ],
+    recommendedServices: [
+      {
+        name: "GBP + Local SEO Domination",
+        why: "Top-3 rankings in every suburb, schema markup, weekly GBP posts, review velocity.",
+        href: "/services#seo",
+      },
+      {
+        name: "Recurring Treatment Email Engine",
+        why: "Annual reminders, warranty-renewal sequences, post-treatment review requests.",
+        href: "/services#email",
+      },
+      {
+        name: "Real Estate Partnership Channel",
+        why: "Pre-sale termite inspection partnerships, property manager outreach, co-branded checklists.",
+        href: "/services#outreach",
+      },
+    ],
+    scenario: {
+      scenario: "A NSW pest control operator, 1-2 vans, residential-led with some commercial",
+      before: "Residential-only, no recurring program, 0 agent partnerships",
+      after: "After 90 days: recurring program live (35-45% of one-offs converting to annual), 2-4 real estate agency partnerships live, LSA + GBP top-3 in service area",
+      caveat: "Sydney metro pest Google Ads typically need a $2K-$5K monthly minimum to gather optimisation signal (industry benchmarks). Regional markets work at much lower spend.",
+    },
+    seasonal: {
+      peak: "Spring (rats), summer (cockroaches/spiders), pre-summer (termite inspections)",
+      trough: "Mid-winter (Jun-Jul)",
+      prepTime: "Termite season campaigns from August onwards",
+      play: "Winter: real estate partnership building + content production. Spring/summer: pest-specific campaigns. Year-round: recurring retention.",
+    },
+    faqs: [
+      {
+        q: "How do we win the 'I just saw a cockroach' panic call?",
+        a: "Top-3 GBP rankings + LSA participation + click-to-call landing pages + 24/7 SMS auto-reply. Same-day intent doesn't have time for a return-call tomorrow.",
+      },
+      {
+        q: "Are termite inspections worth marketing?",
+        a: "Yes. Pre-sale and warranty inspections are $300-800 jobs at high margin. A dedicated agent partnership channel drives 8-15 inspections per agency per year.",
+      },
+      {
+        q: "How do we build a recurring treatment program?",
+        a: "Three layers: (1) post-treatment email asking about ongoing protection, (2) annual reminder 11 months later, (3) 'recurring program' upsell at quote stage. Together typically convert 35-45% of one-offs into annuals.",
+      },
+      {
+        q: "What's the right cost-per-lead for pest control?",
+        a: "$30-80 for residential Google Ads; $20-50 for LSA. Sydney metro requires $2K-$5K monthly minimum spend to optimise; regional much lower.",
+      },
+      {
+        q: "Do you handle commercial pest control marketing?",
+        a: "Yes. Commercial pest (food service, retail, hospitality, strata) runs on outreach, partnerships, and contract-renewal cycles — not residential ads. Built as a separate channel.",
+      },
+      {
+        q: "Should we do termite-only marketing or general pest?",
+        a: "Both — but with separate landing pages and ad accounts. Termite buyers are different from cockroach buyers (planning vs panicked). Funnel segmented so each gets the right message.",
+      },
+    ],
+    searchPatterns: [
+      "marketing for pest control operators",
+      "pest control lead generation Australia",
+      "termite inspection marketing",
+      "Google Ads for pest control",
+      "how to get pest control leads",
+    ],
+    metaTitle:
+      "Marketing for Pest Control Operators in Australia | Same-Day Lead Engine | ClickSmith",
+    metaDescription:
+      "Pest control is dominated by same-day intent. We build the GBP, Google Ads, LSA and recurring-treatment engine that owns your service area. AI-driven marketing.",
+    related: ["plumbers", "electricians", "roofers"],
+  },
+];
+
+// ─────────────────────────────────────────────────────────────
+// HELPER FUNCTIONS
+// ─────────────────────────────────────────────────────────────
+
+export function getTradeBySlug(slug: string): Trade | undefined {
+  return trades.find((t) => t.slug === slug);
+}
+
+export function getAllTradeSlugs(): string[] {
+  return trades.map((t) => t.slug);
+}
+
+export function getRelatedTrades(slug: string): Trade[] {
+  const trade = getTradeBySlug(slug);
+  if (!trade) return [];
+  return trade.related
+    .map((s) => getTradeBySlug(s))
+    .filter((t): t is Trade => Boolean(t));
+}
