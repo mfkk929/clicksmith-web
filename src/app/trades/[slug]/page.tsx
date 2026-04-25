@@ -21,6 +21,7 @@ import {
   Sparkles,
   Target,
   Phone,
+  Info,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
@@ -29,10 +30,10 @@ import {
   getAllTradeSlugs,
   getRelatedTrades,
   type Trade,
+  type ChannelPriority,
 } from "@/lib/trades-data";
 import { siteConfig } from "@/lib/site";
 
-// Map of icon names → lucide components (server-safe)
 const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Hammer,
   Sun,
@@ -46,6 +47,15 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   Box,
   Paintbrush,
   Bug,
+};
+
+// Priority badge styling
+const PRIORITY_STYLES: Record<ChannelPriority, string> = {
+  Primary:
+    "bg-[var(--color-action)] text-[var(--color-on-action)] border-[var(--color-action)]",
+  High: "bg-[var(--color-action)]/10 text-[var(--color-action)] border-[var(--color-action)]/30",
+  Supporting:
+    "bg-[var(--color-muted)] text-[var(--color-muted-foreground)] border-[var(--color-border)]",
 };
 
 // ─────────────────────────────────────────────────────────────
@@ -103,14 +113,8 @@ function buildSchema(trade: Trade) {
       name: siteConfig.name,
       url: siteConfig.url,
     },
-    areaServed: {
-      "@type": "Country",
-      name: "Australia",
-    },
-    audience: {
-      "@type": "BusinessAudience",
-      audienceType: trade.plural,
-    },
+    areaServed: { "@type": "Country", name: "Australia" },
+    audience: { "@type": "BusinessAudience", audienceType: trade.plural },
     url,
   };
 
@@ -165,7 +169,6 @@ export default async function TradePage({
 
   return (
     <>
-      {/* JSON-LD Schema */}
       {schemas.map((s, i) => (
         <script
           key={i}
@@ -226,15 +229,14 @@ export default async function TradePage({
                 <div className="flex items-center gap-3 text-[var(--color-action)]">
                   <Sparkles className="h-5 w-5" />
                   <span className="text-sm font-semibold uppercase tracking-wide">
-                    The Promise
+                    Built for {trade.plural}
                   </span>
                 </div>
                 <p className="mt-4 text-2xl font-bold text-[var(--color-primary)]">
-                  10 qualified leads in 60 days, or you don't pay the next
-                  month.
+                  Trade-specific marketing — not a generic SEO retainer.
                 </p>
                 <p className="mt-3 text-sm text-[var(--color-muted-foreground)]">
-                  Built for {trade.plural.toLowerCase()}. No retainer lock-ins.
+                  Channel mix, content, and timing built around how {trade.plural.toLowerCase()} actually win work.
                 </p>
               </div>
             </div>
@@ -247,7 +249,7 @@ export default async function TradePage({
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="grid gap-6 text-center md:grid-cols-4">
             <div>
-              <div className="text-3xl font-bold text-[var(--color-primary)]">
+              <div className="text-2xl font-bold text-[var(--color-primary)]">
                 Built for {trade.plural}
               </div>
               <div className="text-sm text-[var(--color-muted-foreground)]">
@@ -255,27 +257,27 @@ export default async function TradePage({
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-[var(--color-primary)]">
-                10 leads / 60 days
+              <div className="text-2xl font-bold text-[var(--color-primary)]">
+                AU-based team
               </div>
               <div className="text-sm text-[var(--color-muted-foreground)]">
-                Performance guarantee, in writing
+                Local market knowledge, not offshore generic
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-[var(--color-primary)]">
-                AI-driven
+              <div className="text-2xl font-bold text-[var(--color-primary)]">
+                AI + data driven
               </div>
               <div className="text-sm text-[var(--color-muted-foreground)]">
-                Data-backed, not gut-feel marketing
+                Decisions backed by performance data, not gut-feel
               </div>
             </div>
             <div>
-              <div className="text-3xl font-bold text-[var(--color-primary)]">
-                Australian
+              <div className="text-2xl font-bold text-[var(--color-primary)]">
+                Monthly reporting
               </div>
               <div className="text-sm text-[var(--color-muted-foreground)]">
-                Local team, local market knowledge
+                Transparent performance against agreed metrics
               </div>
             </div>
           </div>
@@ -354,52 +356,44 @@ export default async function TradePage({
               How {trade.plural.toLowerCase()} customers actually find you
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              The channel mix that works for {trade.plural.toLowerCase()},
-              backed by real data — not generic 'do everything' advice.
+              Channels ranked by typical priority for {trade.plural.toLowerCase()} — based on AU industry data and our own client work, not generic 'do everything' advice.
             </p>
           </div>
 
-          <div className="mt-12 overflow-hidden rounded-2xl border border-[var(--color-border)]">
-            <table className="w-full">
-              <thead className="bg-[var(--color-surface)]">
-                <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--color-primary)]">
-                    Channel
-                  </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--color-primary)]">
-                    % of leads
-                  </th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-[var(--color-primary)]">
-                    Why it matters
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-[var(--color-border)] bg-[var(--color-background)]">
-                {trade.channelMix.map((c, i) => (
-                  <tr key={i}>
-                    <td className="px-6 py-5 align-top font-semibold text-[var(--color-primary)]">
-                      {c.channel}
-                    </td>
-                    <td className="px-6 py-5 align-top">
-                      <div className="flex items-center gap-3">
-                        <div className="h-2 w-24 rounded-full bg-[var(--color-muted)]">
-                          <div
-                            className="h-2 rounded-full bg-[var(--color-action)]"
-                            style={{ width: `${c.percentage}%` }}
-                          />
-                        </div>
-                        <span className="text-sm font-bold text-[var(--color-action)]">
-                          {c.percentage}%
+          <div className="mt-12 grid gap-4">
+            {trade.channelMix.map((c, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-6"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h3 className="text-lg font-bold text-[var(--color-primary)]">
+                        {c.channel}
+                      </h3>
+                      <span
+                        className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${PRIORITY_STYLES[c.priority]}`}
+                      >
+                        {c.priority}
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm text-[var(--color-muted-foreground)]">
+                      {c.why}
+                    </p>
+                    {c.benchmark && (
+                      <div className="mt-3 flex items-start gap-2 rounded-lg bg-[var(--color-background)] p-3 text-xs text-[var(--color-muted-foreground)]">
+                        <Info className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-[var(--color-action)]" />
+                        <span>
+                          <strong className="text-[var(--color-primary)]">Benchmark:</strong>{" "}
+                          {c.benchmark}
                         </span>
                       </div>
-                    </td>
-                    <td className="px-6 py-5 align-top text-sm text-[var(--color-muted-foreground)]">
-                      {c.why}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -418,8 +412,7 @@ export default async function TradePage({
               The 3 services that matter most for {trade.plural.toLowerCase()}
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              We could sell you 12 services. For {trade.plural.toLowerCase()},
-              these three move the needle.
+              We could sell you 12 services. For {trade.plural.toLowerCase()}, these three move the needle.
             </p>
           </div>
 
@@ -450,49 +443,50 @@ export default async function TradePage({
         </div>
       </section>
 
-      {/* ── 7. CASE STUDY ────────────────────────────────── */}
+      {/* ── 7. WHAT GOOD LOOKS LIKE (was: Case study) ───── */}
       <section
-        aria-labelledby="case-title"
+        aria-labelledby="scenario-title"
         className="bg-[var(--color-background)] py-20 md:py-28"
       >
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
           <div className="rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface)] p-10 md:p-14">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
               <TrendingUp className="h-4 w-4" />
-              Case Snapshot
+              What good looks like
             </div>
             <h2
-              id="case-title"
-              className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
+              id="scenario-title"
+              className="text-2xl font-bold text-[var(--color-primary)] md:text-3xl"
             >
-              {trade.caseStudy.name}
+              {trade.scenario.scenario}
             </h2>
-            <p className="text-base text-[var(--color-muted-foreground)]">
-              {trade.caseStudy.suburb}
-            </p>
 
             <div className="mt-10 grid gap-8 md:grid-cols-2">
               <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-background)] p-6">
                 <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
-                  Before
+                  Typical starting state
                 </div>
-                <p className="mt-2 text-lg font-semibold text-[var(--color-primary)]">
-                  {trade.caseStudy.before}
+                <p className="mt-2 text-base font-semibold text-[var(--color-primary)]">
+                  {trade.scenario.before}
                 </p>
               </div>
               <div className="rounded-xl border border-[var(--color-action)] bg-[var(--color-action)]/5 p-6">
                 <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-action)]">
-                  After
+                  Realistic 90-day outcome
                 </div>
-                <p className="mt-2 text-lg font-semibold text-[var(--color-primary)]">
-                  {trade.caseStudy.after}
+                <p className="mt-2 text-base font-semibold text-[var(--color-primary)]">
+                  {trade.scenario.after}
                 </p>
               </div>
             </div>
 
-            <p className="mt-8 text-lg italic text-[var(--color-primary)]">
-              "{trade.caseStudy.result}"
-            </p>
+            <div className="mt-8 flex items-start gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] p-4">
+              <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-muted-foreground)]" />
+              <p className="text-sm text-[var(--color-muted-foreground)]">
+                <strong className="text-[var(--color-primary)]">Honest note:</strong>{" "}
+                {trade.scenario.caveat}
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -521,7 +515,7 @@ export default async function TradePage({
               <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
                 Peak season
               </div>
-              <p className="mt-3 text-lg font-bold text-[var(--color-primary)]">
+              <p className="mt-3 text-base font-bold text-[var(--color-primary)]">
                 {trade.seasonal.peak}
               </p>
             </div>
@@ -529,7 +523,7 @@ export default async function TradePage({
               <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
                 Trough season
               </div>
-              <p className="mt-3 text-lg font-bold text-[var(--color-primary)]">
+              <p className="mt-3 text-base font-bold text-[var(--color-primary)]">
                 {trade.seasonal.trough}
               </p>
             </div>
@@ -537,7 +531,7 @@ export default async function TradePage({
               <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
                 Prep window
               </div>
-              <p className="mt-3 text-lg font-bold text-[var(--color-primary)]">
+              <p className="mt-3 text-base font-bold text-[var(--color-primary)]">
                 {trade.seasonal.prepTime}
               </p>
             </div>
@@ -545,7 +539,7 @@ export default async function TradePage({
               <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-action)]">
                 The play
               </div>
-              <p className="mt-3 text-lg font-bold text-[var(--color-primary)]">
+              <p className="mt-3 text-base font-bold text-[var(--color-primary)]">
                 {trade.seasonal.play}
               </p>
             </div>
@@ -567,14 +561,14 @@ export default async function TradePage({
               Pricing for {trade.plural.toLowerCase()}
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              Simple monthly retainers. No lock-ins. Performance-guaranteed.
+              Monthly retainers. No lock-ins. Ad spend separate from retainer fees.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
               <div className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
-                Starter
+                Foundation
               </div>
               <div className="mt-2 text-4xl font-bold text-[var(--color-primary)]">
                 $2,000
@@ -582,6 +576,9 @@ export default async function TradePage({
                   /mo
                 </span>
               </div>
+              <p className="mt-2 text-xs text-[var(--color-muted-foreground)]">
+                Excludes ad spend
+              </p>
               <ul className="mt-6 space-y-3 text-sm text-[var(--color-muted-foreground)]">
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
@@ -595,6 +592,10 @@ export default async function TradePage({
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
                   Monthly performance report
                 </li>
+                <li className="flex gap-2">
+                  <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
+                  On-page schema + technical SEO
+                </li>
               </ul>
             </div>
 
@@ -606,19 +607,22 @@ export default async function TradePage({
                 Growth
               </div>
               <div className="mt-2 text-4xl font-bold text-[var(--color-primary)]">
-                $3,000
+                $3,500
                 <span className="text-base font-normal text-[var(--color-muted-foreground)]">
                   /mo
                 </span>
               </div>
+              <p className="mt-2 text-xs text-[var(--color-muted-foreground)]">
+                Excludes ad spend (typically $1K-$5K/mo additional)
+              </p>
               <ul className="mt-6 space-y-3 text-sm text-[var(--color-muted-foreground)]">
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
-                  Everything in Starter
+                  Everything in Foundation
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
-                  {trade.recommendedServices[0]?.name}
+                  Google Ads + LSA management
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
@@ -626,7 +630,7 @@ export default async function TradePage({
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
-                  10 leads / 60 days guarantee
+                  Conversion-tracked landing pages
                 </li>
               </ul>
             </div>
@@ -636,11 +640,14 @@ export default async function TradePage({
                 Scale
               </div>
               <div className="mt-2 text-4xl font-bold text-[var(--color-primary)]">
-                $4,000+
+                $5,000+
                 <span className="text-base font-normal text-[var(--color-muted-foreground)]">
                   /mo
                 </span>
               </div>
+              <p className="mt-2 text-xs text-[var(--color-muted-foreground)]">
+                Custom scope, ad spend separate
+              </p>
               <ul className="mt-6 space-y-3 text-sm text-[var(--color-muted-foreground)]">
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
@@ -648,7 +655,7 @@ export default async function TradePage({
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
-                  {trade.recommendedServices[2]?.name}
+                  {trade.recommendedServices[0]?.name}
                 </li>
                 <li className="flex gap-2">
                   <CheckCircle2 className="h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
@@ -660,6 +667,14 @@ export default async function TradePage({
                 </li>
               </ul>
             </div>
+          </div>
+
+          <div className="mx-auto mt-10 flex max-w-3xl items-start gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+            <Info className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-muted-foreground)]" />
+            <p className="text-sm text-[var(--color-muted-foreground)]">
+              <strong className="text-[var(--color-primary)]">Pricing context:</strong>{" "}
+              AU digital marketing retainers for trades typically run $1,500-$5,000/month for SEO + GBP, plus $800-$2,500/month for Google Ads management on top of ad spend (industry benchmarks 2026). Our tiers sit comfortably in those ranges with monthly performance reporting and no lock-in contracts.
+            </p>
           </div>
         </div>
       </section>
@@ -678,8 +693,7 @@ export default async function TradePage({
               {trade.singular}-specific FAQs
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              The questions {trade.plural.toLowerCase()} actually ask us before
-              they sign.
+              The questions {trade.plural.toLowerCase()} actually ask us before they sign.
             </p>
           </div>
 
@@ -732,50 +746,4 @@ export default async function TradePage({
                     <h3 className="text-lg font-bold text-[var(--color-primary)] group-hover:text-[var(--color-action)]">
                       Marketing for {r.plural}
                     </h3>
-                    <p className="mt-2 text-sm text-[var(--color-muted-foreground)]">
-                      {r.metaDescription.split(".")[0]}.
-                    </p>
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* ── 12. FINAL CTA ────────────────────────────────── */}
-      <section
-        aria-labelledby="cta-title"
-        className="bg-[var(--color-primary)] py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-          <h2
-            id="cta-title"
-            className="text-3xl font-bold text-[var(--color-on-primary)] md:text-5xl"
-          >
-            Ready to fill your {trade.singular.toLowerCase()} pipeline?
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-on-primary)]/80">
-            Book a free 30-minute marketing audit. We'll review your current
-            funnel, GBP, ads and website — and tell you exactly where the
-            leakage is. No pitch, no pressure.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/audit">
-              <Button variant="action" size="lg">
-                Book your free audit
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href={`tel:${siteConfig.contact.phone}`}>
-              <Button variant="secondary" size="lg">
-                <Phone className="mr-2 h-4 w-4" />
-                Call {siteConfig.contact.phoneDisplay}
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+                    <p className="mt-2 text-sm text-[var(--color-muted
