@@ -299,7 +299,7 @@ export default function ServicesPage() {
                 </Button>
               </Link>
               <Link href="/playbooks">
-                <Button variant="outline" size="lg">
+                <Button variant="secondary" size="lg">
                   Or grab a playbook first
                 </Button>
               </Link>
@@ -635,7 +635,7 @@ export default function ServicesPage() {
             </div>
           </div>
           <Link href="/audit">
-            <Button variant="outline" size="lg" className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-action)]">
+            <Button variant="secondary" size="lg" className="!border-white !text-white !bg-transparent hover:!bg-white hover:!text-[var(--color-action)]">
               Book my audit
             </Button>
           </Link>
@@ -765,7 +765,7 @@ export default function ServicesPage() {
               </Button>
             </Link>
             <Link href="/playbooks">
-              <Button variant="outline" size="lg" className="!border-white !text-white hover:!bg-white hover:!text-[var(--color-primary)]">
+              <Button variant="secondary" size="lg" className="!border-white !text-white !bg-transparent hover:!bg-white hover:!text-[var(--color-primary)]">
                 Grab a playbook
               </Button>
             </Link>

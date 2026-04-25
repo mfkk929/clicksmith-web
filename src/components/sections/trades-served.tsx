@@ -1,21 +1,21 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-// Order by search volume / margin — biggest first.
-// TODO: replace with dynamic import from trades data when we scale to 32 trades.
+// Ordered by retainer potential, lifetime value and ClickSmith fit.
+// Hub page: /trades. Each item links to /trades/[slug] for the unique playbook.
 const trades = [
+  { slug: "builders", name: "Builders" },
+  { slug: "solar", name: "Solar Installers" },
+  { slug: "pool-builders", name: "Pool Builders" },
+  { slug: "renovators", name: "Renovators" },
+  { slug: "hvac", name: "HVAC / Air Con" },
+  { slug: "roofers", name: "Roofers" },
   { slug: "plumbers", name: "Plumbers" },
   { slug: "electricians", name: "Electricians" },
-  { slug: "solar", name: "Solar Installers" },
-  { slug: "builders", name: "Builders" },
-  { slug: "roofers", name: "Roofers" },
-  { slug: "hvac", name: "HVAC / Air Con" },
-  { slug: "painters", name: "Painters" },
-  { slug: "concreters", name: "Concreters" },
   { slug: "landscapers", name: "Landscapers" },
-  { slug: "carpenters", name: "Carpenters" },
-  { slug: "tilers", name: "Tilers" },
-  { slug: "glaziers", name: "Glaziers" },
+  { slug: "concreters", name: "Concreters" },
+  { slug: "painters", name: "Painters" },
+  { slug: "pest-control", name: "Pest Control" },
 ];
 
 export function TradesServed() {
@@ -58,12 +58,12 @@ export function TradesServed() {
         </ul>
 
         <p className="mt-8 text-center text-sm text-[var(--color-muted-foreground)]">
-          Don&rsquo;t see your trade?{" "}
+          See all 12 trade playbooks?{" "}
           <Link
-            href="/contact"
+            href="/trades"
             className="font-semibold text-[var(--color-primary)] underline-offset-4 hover:underline"
           >
-            We work with 30+ trades — get in touch
+            Browse the trades hub →
           </Link>
         </p>
       </div>
