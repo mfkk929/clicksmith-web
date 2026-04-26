@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -71,6 +72,21 @@ const stats = [
   { value: "$0", label: "Lock-in contracts" },
 ];
 
+const tradesList = [
+  "Builders",
+  "Solar Installers",
+  "Pool Builders",
+  "Renovators",
+  "HVAC Contractors",
+  "Roofers",
+  "Plumbers",
+  "Electricians",
+  "Landscapers",
+  "Concreters",
+  "Painters",
+  "Pest Control",
+];
+
 export default function AboutPage() {
   const breadcrumb = {
     "@context": "https://schema.org",
@@ -98,6 +114,13 @@ export default function AboutPage() {
       email: siteConfig.contact.email,
       contactType: "sales",
       areaServed: "AU",
+    },
+    founder: {
+      "@type": "Person",
+      name: "Furqan Kabir",
+      jobTitle: "Founder",
+      worksFor: { "@type": "Organization", name: siteConfig.name },
+      image: `${siteConfig.url}/team/furqan-about.jpg`,
     },
     sameAs: [siteConfig.social.instagram, siteConfig.social.linkedin],
   };
@@ -166,48 +189,79 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* THE STORY */}
+      {/* THE STORY + FOUNDER PORTRAIT */}
       <section
         aria-labelledby="story-title"
         className="bg-[var(--color-background)] py-20 md:py-28"
       >
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
-          <h2
-            id="story-title"
-            className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
-          >
-            Why we exist
-          </h2>
-          <div className="mt-8 space-y-6 text-lg leading-relaxed text-[var(--color-muted-foreground)]">
-            <p>
-              The first time we sat across from a tradie talking about
-              marketing, he said two things in 30 seconds. "Last quarter I lost
-              forty grand because I missed calls on Saturdays." And: "The last
-              agency I hired never called me back after they got the deposit."
-            </p>
-            <p>
-              Both problems were fixable in an afternoon. The missed-call
-              recovery alone — an SMS auto-reply plus a 30-minute callback
-              window — would have saved most of that forty grand. The agency
-              problem was solved by ending the contract.
-            </p>
-            <p className="text-[var(--color-primary)]">
-              We started ClickSmith because that conversation kept happening,
-              with different tradies, in different trades, in different
-              suburbs. The pain was always the same: <strong>the phone wasn't
-              ringing, or it was, and nobody picked up</strong>. Marketing
-              agencies were charging $5K a month and not solving either thing.
-            </p>
-            <p>
-              We built a simple model. Trade-specific playbooks. AU-based
-              team. Month-to-month retainers — no lock-ins. Honest audits
-              first, work second. The retainer earns its keep every month or
-              the operator should be free to walk.
-            </p>
-            <p>
-              That's the whole story. We help tradies fill the calendar and
-              answer the phone. The rest is just channels and execution.
-            </p>
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="grid gap-12 lg:grid-cols-[1fr_360px] lg:items-start">
+            <div>
+              <h2
+                id="story-title"
+                className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
+              >
+                Why we exist
+              </h2>
+              <div className="mt-8 space-y-6 text-lg leading-relaxed text-[var(--color-muted-foreground)]">
+                <p>
+                  The first time we sat across from a tradie talking about
+                  marketing, he said two things in 30 seconds. "Last quarter I
+                  lost forty grand because I missed calls on Saturdays." And:
+                  "The last agency I hired never called me back after they
+                  got the deposit."
+                </p>
+                <p>
+                  Both problems were fixable in an afternoon. The missed-call
+                  recovery alone — an SMS auto-reply plus a 30-minute callback
+                  window — would have saved most of that forty grand. The
+                  agency problem was solved by ending the contract.
+                </p>
+                <p className="text-[var(--color-primary)]">
+                  We started ClickSmith because that conversation kept
+                  happening, with different tradies, in different trades, in
+                  different suburbs. The pain was always the same:{" "}
+                  <strong>
+                    the phone wasn't ringing, or it was, and nobody picked up
+                  </strong>
+                  . Marketing agencies were charging $5K a month and not
+                  solving either thing.
+                </p>
+                <p>
+                  We built a simple model. Trade-specific playbooks. AU-based
+                  team. Month-to-month retainers — no lock-ins. Honest audits
+                  first, work second. The retainer earns its keep every month
+                  or the operator should be free to walk.
+                </p>
+                <p>
+                  That's the whole story. We help tradies fill the calendar
+                  and answer the phone. The rest is just channels and
+                  execution.
+                </p>
+              </div>
+            </div>
+
+            <aside className="lg:sticky lg:top-24">
+              <figure className="overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]">
+                <Image
+                  src="/team/furqan-about.jpg"
+                  alt="Furqan Kabir, founder of ClickSmith"
+                  width={1170}
+                  height={1184}
+                  sizes="(min-width: 1024px) 360px, 100vw"
+                  className="h-auto w-full object-cover"
+                  priority={false}
+                />
+                <figcaption className="border-t border-[var(--color-border)] bg-[var(--color-background)] p-5">
+                  <div className="font-display text-base font-bold text-[var(--color-primary)]">
+                    Furqan Kabir
+                  </div>
+                  <div className="mt-1 text-sm text-[var(--color-muted-foreground)]">
+                    Founder · ClickSmith
+                  </div>
+                </figcaption>
+              </figure>
+            </aside>
           </div>
         </div>
       </section>
@@ -318,20 +372,7 @@ export default function AboutPage() {
               </div>
             </div>
             <ul className="grid grid-cols-2 gap-3">
-              {[
-                "Builders",
-                "Solar Installers",
-                "Pool Builders",
-                "Renovators",
-                "HVAC Contractors",
-                "Roofers",
-                "Plumbers",
-                "Electricians",
-                "Landscapers",
-                "Concreters",
-                "Painters",
-                "Pest Control",
-              ].map((t) => (
+              {tradesList.map((t) => (
                 <li
                   key={t}
                   className="flex items-center gap-2 rounded-lg border border-[var(--color-border)] bg-[var(--color-background)] px-4 py-3 text-sm font-semibold text-[var(--color-primary)]"
@@ -364,8 +405,8 @@ export default function AboutPage() {
           <p className="mt-6 text-lg text-[var(--color-muted-foreground)]">
             Our team is based in NSW. Our clients are in Sydney, Wollongong,
             the Illawarra, the Hunter, the South Coast, and increasingly
-            across VIC and QLD. The marketing fundamentals are the same — only
-            the local SEO and competitive landscape change.
+            across VIC and QLD. The marketing fundamentals are the same —
+            only the local SEO and competitive landscape change.
           </p>
         </div>
       </section>
