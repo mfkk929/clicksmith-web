@@ -195,50 +195,32 @@ export default async function TradePage({
             <span className="text-[var(--color-primary)]">{trade.plural}</span>
           </nav>
 
-          <div className="grid gap-12 lg:grid-cols-[1fr_auto] lg:items-end">
-            <div>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
-                <Icon className="h-4 w-4" />
-                {trade.hero.eyebrow}
-              </div>
-              <h1
-                id="hero-title"
-                className="text-4xl font-bold leading-tight text-[var(--color-primary)] md:text-6xl"
-              >
-                {trade.hero.h1}
-              </h1>
-              <p className="mt-6 max-w-3xl text-lg text-[var(--color-muted-foreground)] md:text-xl">
-                {trade.hero.sub}
-              </p>
-              <div className="mt-10 flex flex-wrap gap-4">
-                <Link href="/audit">
-                  <Button variant="action" size="lg">
-                    Book a free marketing audit
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-                <Link href="/playbooks">
-                  <Button variant="secondary" size="lg">
-                    Get the {trade.singular} playbook
-                  </Button>
-                </Link>
-              </div>
+          <div className="max-w-4xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
+              <Icon className="h-4 w-4" />
+              {trade.hero.eyebrow}
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-8">
-                <div className="flex items-center gap-3 text-[var(--color-action)]">
-                  <Sparkles className="h-5 w-5" />
-                  <span className="text-sm font-semibold uppercase tracking-wide">
-                    Built for {trade.plural}
-                  </span>
-                </div>
-                <p className="mt-4 text-2xl font-bold text-[var(--color-primary)]">
-                  Trade-specific marketing — not a generic SEO retainer.
-                </p>
-                <p className="mt-3 text-sm text-[var(--color-muted-foreground)]">
-                  Channel mix, content, and timing built around how {trade.plural.toLowerCase()} actually win work.
-                </p>
-              </div>
+            <h1
+              id="hero-title"
+              className="text-4xl font-bold leading-[1.05] tracking-tight text-[var(--color-primary)] md:text-5xl lg:text-6xl"
+            >
+              {trade.hero.h1}
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg text-[var(--color-muted-foreground)] md:text-xl">
+              {trade.hero.sub}
+            </p>
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Link href="/audit">
+                <Button variant="action" size="lg">
+                  Book a free marketing audit
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <Link href="/playbooks">
+                <Button variant="secondary" size="lg">
+                  Get the {trade.singular} playbook
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -791,3 +773,4 @@ export default async function TradePage({
     </>
   );
 }
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
