@@ -10,10 +10,10 @@ import {
 import {
   submitAudit,
   enrichAudit,
-  PRIMARY_PROBLEMS,
   type AuditFormState,
   type AuditEnrichmentState,
 } from "@/app/actions";
+import { PRIMARY_PROBLEMS } from "@/lib/audit-options";
 import { Button } from "@/components/ui/button";
 
 const trades = [

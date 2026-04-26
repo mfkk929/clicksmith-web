@@ -1,6 +1,7 @@
 "use server";
 
 import { sendAuditEmail, sendAuditEnrichment } from "@/lib/email";
+import { ALLOWED_TRADES, PRIMARY_PROBLEMS } from "@/lib/audit-options";
 
 /**
  * Two-step audit form.
@@ -43,30 +44,6 @@ export type AuditEnrichmentState = {
     Record<"businessName" | "serviceArea" | "primaryProblem", string>
   >;
 };
-
-const ALLOWED_TRADES = [
-  "Plumber",
-  "Electrician",
-  "Solar installer",
-  "Builder",
-  "Roofer",
-  "HVAC / Air Con",
-  "Painter",
-  "Concreter",
-  "Landscaper",
-  "Carpenter",
-  "Tiler",
-  "Glazier",
-  "Other",
-] as const;
-
-export const PRIMARY_PROBLEMS = [
-  "Not enough leads coming in",
-  "Leads coming in, but mostly bad quality",
-  "Spending too much per lead",
-  "Don't really know what's working",
-  "Other (tell us in a follow-up)",
-] as const;
 
 // ─────────────────────────────────────────────────────────────
 // VALIDATION HELPERS
