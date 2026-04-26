@@ -1,88 +1,100 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowRight,
   BookOpen,
   Mail,
-  Phone,
-  Sparkles,
-  Wrench,
   Search,
   Megaphone,
   Globe,
   Bot,
   Calendar,
   TrendingUp,
+  ArrowRight,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Learn | Marketing Guides for Australian Tradies | ClickSmith",
+  title: "Learning Hub | Marketing Articles & Guides for Australian Tradies | ClickSmith",
   description:
-    "Free marketing guides, playbooks, and how-tos for Australian tradies. Real strategies, no fluff. Pick a topic and start with what's costing you the most leads right now.",
+    "Articles, how-tos, and field-tested guides on marketing for Australian tradies. Local SEO, Google Ads, websites, AI automation, seasonal calendars, and cost-per-lead benchmarks.",
   alternates: { canonical: `${siteConfig.url}/learn` },
   openGraph: {
-    title: "Learn | Marketing Guides for Australian Tradies | ClickSmith",
+    title: "Learning Hub | Marketing Articles for Australian Tradies | ClickSmith",
     description:
-      "Free marketing guides for Australian tradies. Real strategies, no fluff.",
+      "Articles and guides on marketing for Australian tradies. New content monthly.",
     url: `${siteConfig.url}/learn`,
     siteName: siteConfig.name,
     type: "website",
   },
 };
 
-const topics = [
+type Category = {
+  slug: string;
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  blurb: string;
+  topics: string[];
+  count: number; // number of articles published in this category
+};
+
+const categories: Category[] = [
   {
+    slug: "local-seo",
     icon: Search,
-    title: "Local SEO + Google Business Profile",
-    body: "Top-3 GBP rankings are the single biggest lever in most trades. Categories, photos, posts, review velocity — fix the gaps that quietly cost you calls.",
-    href: "/services#seo",
-    cta: "Read the SEO basics",
+    title: "Local SEO & Google Business Profile",
+    blurb:
+      "How AU tradies rank in the Local Pack. Categories, photos, posts, reviews, suburb pages, and the weekly GBP routine that compounds month over month.",
+    topics: ["GBP optimisation", "Suburb pages", "Review velocity", "NAP citations", "Schema markup"],
+    count: 0,
   },
   {
+    slug: "google-ads",
     icon: Megaphone,
-    title: "Google Ads + Local Services Ads",
-    body: "Why Google Ads beats Facebook for emergency trades, how LSA changes the maths, and the bidding mistakes that bleed budget.",
-    href: "/services#paid-ads",
-    cta: "Open the ads guide",
+    title: "Google Ads & Local Services Ads",
+    blurb:
+      "Search-intent campaigns that pay for themselves. Bidding mistakes that bleed budget, when to add LSA on top, and the negative-keyword discipline most tradies skip.",
+    topics: ["Search vs awareness", "LSA setup", "Negative keywords", "Call tracking", "Dayparting"],
+    count: 0,
   },
   {
+    slug: "websites",
     icon: Globe,
     title: "Tradie websites that convert",
-    body: "Phone above the fold. Real photos. One CTA per page. The five fixes that turn a 1% website into a 3-5% website.",
-    href: "/services#websites",
-    cta: "See the website checklist",
+    blurb:
+      "What separates a 1% website from a 3-5% website. Phone above the fold, real photos, one CTA per page, page-speed fundamentals, and trust signals that close the gap.",
+    topics: ["Conversion fundamentals", "Page speed", "Trust signals", "Mobile-first design", "Forms"],
+    count: 0,
   },
   {
+    slug: "ai-automation",
     icon: Bot,
-    title: "AI + automation for tradies",
-    body: "Missed-call SMS recovery, quote-speed automation, recurring-treatment email engines. The tools that pay for themselves in weeks.",
-    href: "/services#automation",
-    cta: "Explore automation",
+    title: "AI & automation for tradies",
+    blurb:
+      "Missed-call SMS recovery, quote-speed automation, recurring-treatment email engines, and AI-assisted review responses. Tools that pay for themselves in weeks.",
+    topics: ["Missed-call SMS", "Quote-speed automation", "Email engines", "AI review responses", "CRM basics"],
+    count: 0,
   },
   {
+    slug: "seasonal",
     icon: Calendar,
     title: "Seasonal marketing calendars",
-    body: "Every trade has peak/trough cycles. Pre-summer, pre-winter, storm season, school holidays — when to push, when to prep, when to bank content.",
-    href: "/trades",
-    cta: "View by trade",
+    blurb:
+      "Every trade has peak/trough cycles — pre-summer, pre-winter, storm seasons, school holidays. When to push, when to prep, when to bank content for the next wave.",
+    topics: ["Peak/trough cycles", "Pre-season campaigns", "Off-season content", "Storm response", "EOFY plays"],
+    count: 0,
   },
   {
+    slug: "benchmarks",
     icon: TrendingUp,
     title: "Cost-per-lead benchmarks",
-    body: "Real AU numbers, by trade. What you should be paying for plumbing leads, solar leads, electrician leads — and how to know if you're being overcharged.",
-    href: "/trades",
-    cta: "See the benchmarks",
+    blurb:
+      "Real AU numbers, by trade and channel. What you should be paying for plumbing leads, solar quotes, electrician calls — and how to know if you're being overcharged.",
+    topics: ["CPL by trade", "CPC ranges", "Conversion rates", "ROAS targets", "Industry reports"],
+    count: 0,
   },
 ];
 
-const playbookHighlights = [
-  "How tradies actually win work in 2026",
-  "The missed-call recovery system (with SMS scripts)",
-  "GBP optimisation: the 30-minute weekly routine",
-  "Quote-speed automation: from 4 hours to 4 minutes",
-];
+const totalArticles = categories.reduce((sum, c) => sum + c.count, 0);
 
 export default function LearnPage() {
   const breadcrumb = {
@@ -99,11 +111,24 @@ export default function LearnPage() {
     ],
   };
 
+  const collection = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "ClickSmith Learning Hub",
+    description: "Articles, how-tos, and guides on marketing for Australian tradies.",
+    url: `${siteConfig.url}/learn`,
+    isPartOf: { "@type": "WebSite", name: siteConfig.name, url: siteConfig.url },
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collection) }}
       />
 
       {/* HERO */}
@@ -123,162 +148,144 @@ export default function LearnPage() {
           <div className="max-w-4xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
               <BookOpen className="h-4 w-4" />
-              The ClickSmith learning hub
+              The ClickSmith Learning Hub
             </div>
             <h1
               id="hero-title"
               className="text-4xl font-bold leading-[1.05] tracking-tight text-[var(--color-primary)] md:text-5xl lg:text-6xl"
             >
-              Marketing guides for tradies. No fluff. No funnels-and-synergies talk.
+              Marketing articles for Australian tradies. Plain English, real numbers.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-[var(--color-muted-foreground)] md:text-xl">
-              Pick the topic that's costing you the most leads right now. Most
-              tradies fix one or two things and unlock 30-50% more booked
-              jobs. We'll show you which two.
+              Field-tested guides covering everything from the basics — Local
+              SEO and Google Ads — to the advanced plays most tradies haven't
+              picked up yet. Browse the categories below or jump into the
+              latest articles.
             </p>
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/playbooks">
-                <Button variant="action" size="lg">
-                  Get the playbooks
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
-              <Link href="/audit">
-                <Button variant="secondary" size="lg">
-                  Skip ahead — book a free audit
-                </Button>
-              </Link>
+
+            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-2 text-sm text-[var(--color-muted-foreground)]">
+              <span>{categories.length} categories</span>
+              <span>·</span>
+              <span>{totalArticles} articles</span>
+              <span>·</span>
+              <span>New content monthly</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TOPIC GRID */}
+      {/* CATEGORIES */}
       <section
-        aria-labelledby="topics-title"
+        aria-labelledby="categories-title"
         className="bg-[var(--color-surface)] py-20 md:py-28"
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto max-w-3xl">
             <h2
-              id="topics-title"
+              id="categories-title"
               className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
             >
-              Start with what's broken
+              Browse by category
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              Six topics that cover most of what moves the needle for
-              Australian tradies in 2026. Each one links to a deeper guide or
-              the relevant section of our services.
+              Six topic areas covering most of what moves the needle for
+              Australian tradies in 2026. Each category links to its archive
+              once articles publish.
             </p>
           </div>
 
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {topics.map((t) => (
-              <Link
-                key={t.title}
-                href={t.href}
-                className="group flex flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] p-6 transition hover:border-[var(--color-action)]"
-              >
-                <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-action)]/10 text-[var(--color-action)]">
-                  <t.icon className="h-5 w-5" />
-                </div>
-                <h3 className="text-lg font-bold text-[var(--color-primary)] group-hover:text-[var(--color-action)]">
-                  {t.title}
-                </h3>
-                <p className="mt-3 flex-1 text-sm text-[var(--color-muted-foreground)]">
-                  {t.body}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-action)]">
-                  {t.cta}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
+            {categories.map((c) => {
+              const Icon = c.icon;
+              const hasArticles = c.count > 0;
+
+              const Card = (
+                <article className="flex h-full flex-col rounded-2xl border border-[var(--color-border)] bg-[var(--color-background)] p-6 transition hover:border-[var(--color-action)]">
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[var(--color-action)]/10 text-[var(--color-action)]">
+                      <Icon className="h-5 w-5" />
+                    </div>
+                    <span className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs font-semibold text-[var(--color-muted-foreground)]">
+                      {hasArticles ? `${c.count} articles` : "Coming soon"}
+                    </span>
+                  </div>
+
+                  <h3 className="mt-5 text-lg font-bold text-[var(--color-primary)]">
+                    {c.title}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm text-[var(--color-muted-foreground)]">
+                    {c.blurb}
+                  </p>
+
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {c.topics.slice(0, 4).map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-muted-foreground)]"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {hasArticles ? (
+                    <span className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-action)]">
+                      Read articles
+                      <ArrowRight className="h-4 w-4" />
+                    </span>
+                  ) : (
+                    <span className="mt-6 text-sm font-medium text-[var(--color-muted-foreground)]">
+                      Articles publishing soon
+                    </span>
+                  )}
+                </article>
+              );
+
+              return hasArticles ? (
+                <Link key={c.slug} href={`/learn/${c.slug}`} className="block">
+                  {Card}
+                </Link>
+              ) : (
+                <div key={c.slug}>{Card}</div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* PLAYBOOK HIGHLIGHT */}
+      {/* LATEST ARTICLES */}
       <section
-        aria-labelledby="playbook-title"
+        aria-labelledby="latest-title"
         className="bg-[var(--color-background)] py-20 md:py-28"
       >
         <div className="mx-auto max-w-5xl px-6 lg:px-8">
-          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] md:items-center">
-            <div>
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
-                <Sparkles className="h-4 w-4" />
-                Free playbooks
-              </div>
-              <h2
-                id="playbook-title"
-                className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
-              >
-                The ClickSmith playbooks
-              </h2>
-              <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-                Step-by-step guides built from what's working in real Aussie
-                tradie businesses. Yours to download — no card, no follow-up
-                sales call, just the playbook in your inbox.
-              </p>
-              <div className="mt-8">
-                <Link href="/playbooks">
-                  <Button variant="action" size="lg">
-                    Browse all playbooks
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-            </div>
-            <ul className="space-y-3">
-              {playbookHighlights.map((p) => (
-                <li
-                  key={p}
-                  className="flex items-start gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
-                >
-                  <Wrench className="mt-0.5 h-4 w-4 flex-shrink-0 text-[var(--color-action)]" />
-                  <span className="text-sm text-[var(--color-primary)]">
-                    {p}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* TRADE-SPECIFIC */}
-      <section
-        aria-labelledby="trades-title"
-        className="bg-[var(--color-surface)] py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-5xl px-6 text-center lg:px-8">
           <h2
-            id="trades-title"
+            id="latest-title"
             className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
           >
-            Want it specific to your trade?
+            Latest articles
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[var(--color-muted-foreground)]">
-            12 trade-specific playbooks — channel mix, seasonal play, real
-            cost-per-lead benchmarks, and what good looks like at 90 days.
-          </p>
-          <div className="mt-10">
-            <Link href="/trades">
-              <Button variant="action" size="lg">
-                See trade playbooks
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
+
+          {totalArticles === 0 ? (
+            <div className="mt-10 rounded-2xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] p-10 text-center">
+              <BookOpen className="mx-auto h-8 w-8 text-[var(--color-muted-foreground)]" />
+              <h3 className="mt-4 text-lg font-bold text-[var(--color-primary)]">
+                Articles publishing soon
+              </h3>
+              <p className="mx-auto mt-3 max-w-xl text-[var(--color-muted-foreground)]">
+                The first articles are in editing. We publish when the piece
+                is genuinely useful — not on a content calendar. Drop your
+                email below to get the first ones in your inbox.
+              </p>
+            </div>
+          ) : null}
         </div>
       </section>
 
       {/* NEWSLETTER */}
       <section
         aria-labelledby="newsletter-title"
-        className="bg-[var(--color-background)] py-20 md:py-28"
+        className="bg-[var(--color-surface)] py-20 md:py-28"
       >
         <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
           <Mail className="mx-auto h-10 w-10 text-[var(--color-action)]" />
@@ -286,52 +293,22 @@ export default function LearnPage() {
             id="newsletter-title"
             className="mt-6 text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
           >
-            New guides land monthly
+            Get new articles in your inbox
           </h2>
           <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
+            One email per article. No promos, no upsells, no auto-newsletters
+            full of filler.
+          </p>
+          <p className="mt-6 text-base text-[var(--color-muted-foreground)]">
             Email{" "}
             <a
-              href={`mailto:${siteConfig.contact.email}?subject=Subscribe%20to%20ClickSmith%20updates`}
+              href={`mailto:${siteConfig.contact.email}?subject=Subscribe%20to%20Learning%20Hub&body=Add%20me%20to%20the%20articles%20list.`}
               className="font-semibold text-[var(--color-action)] hover:text-[var(--color-action-strong)]"
             >
               {siteConfig.contact.email}
             </a>{" "}
-            with the subject "subscribe" and we'll add you to the list. No
-            spam, no auto-newsletters, just new playbooks when they're ready.
+            with the subject "subscribe" and we'll add you to the list.
           </p>
-        </div>
-      </section>
-
-      {/* FINAL CTA */}
-      <section
-        aria-labelledby="cta-title"
-        className="bg-[var(--color-primary)] py-20 md:py-28"
-      >
-        <div className="mx-auto max-w-4xl px-6 text-center lg:px-8">
-          <h2
-            id="cta-title"
-            className="text-3xl font-bold text-[var(--color-on-primary)] md:text-5xl"
-          >
-            Reading is fine. Doing is better.
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-on-primary)]/80">
-            Book the free 30-minute audit and we'll skip the reading list —
-            we'll just show you what's broken and what to fix this week.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-4">
-            <Link href="/audit">
-              <Button variant="action" size="lg">
-                Book my free audit
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href={`tel:${siteConfig.contact.phone}`}>
-              <Button variant="secondary" size="lg">
-                <Phone className="mr-2 h-4 w-4" />
-                Call {siteConfig.contact.phoneDisplay}
-              </Button>
-            </Link>
-          </div>
         </div>
       </section>
     </>
