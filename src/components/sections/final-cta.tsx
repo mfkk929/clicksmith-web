@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone } from "lucide-react";
+import { ArrowRight, Phone, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
@@ -19,11 +19,13 @@ export function FinalCta() {
           id="final-cta-heading"
           className="font-display text-4xl font-bold tracking-tight text-white md:text-5xl"
         >
-          Ready to stop chasing work?
+          Ready to stop running the whole show on your own?
         </h2>
         <p className="mt-5 text-lg text-white/75 md:text-xl">
-          Book a free 30-minute lead audit. No pitch — you leave with a plan
-          even if you don&rsquo;t hire us.
+          Book a free 30-minute audit. We&rsquo;ll show you where leads,
+          customers and hours are leaking — and what it&rsquo;d take to plug
+          each one. No pitch. You leave with a plan even if you don&rsquo;t
+          hire us.
         </p>
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Link href="/audit">
@@ -32,19 +34,26 @@ export function FinalCta() {
               <ArrowRight className="h-5 w-5" aria-hidden="true" />
             </Button>
           </Link>
-          <a
-            href={`tel:${siteConfig.contact.phone}`}
+          <Link
+            href="/playbooks"
             className="inline-flex items-center gap-2 text-white underline-offset-4 hover:underline"
           >
-            <Phone className="h-5 w-5" aria-hidden="true" />
-            <span>
-              or call{" "}
-              <span className="tabular-nums font-semibold">
-                {siteConfig.contact.phoneDisplay}
-              </span>
+            <BookOpen className="h-5 w-5" aria-hidden="true" />
+            <span>or grab the free playbook</span>
+          </Link>
+        </div>
+        <p className="mt-6 text-sm text-white/60">
+          Prefer to talk? Call{" "}
+          <a
+            href={`tel:${siteConfig.contact.phone}`}
+            className="inline-flex items-center gap-1 font-semibold text-white underline-offset-4 hover:underline"
+          >
+            <Phone className="h-3.5 w-3.5" aria-hidden="true" />
+            <span className="tabular-nums">
+              {siteConfig.contact.phoneDisplay}
             </span>
           </a>
-        </div>
+        </p>
       </div>
     </section>
   );

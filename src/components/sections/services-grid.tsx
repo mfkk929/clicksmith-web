@@ -1,34 +1,50 @@
 import Link from "next/link";
-import { ArrowRight, TrendingUp, Target, Monitor, Bot } from "lucide-react";
+import { ArrowRight, Megaphone, Zap, Repeat, Workflow } from "lucide-react";
 
 const services = [
   {
-    slug: "seo",
-    icon: TrendingUp,
-    title: "Local SEO for Tradies",
-    benefit: "Rank #1 in Google Maps when locals search your trade.",
-    outcomes: ["Show up in the map pack", "Rank for 'near me' searches", "More calls from Google Business"],
+    icon: Megaphone,
+    title: "Bring the right work in",
+    benefit:
+      "Local SEO, Google Ads and a website that converts — tuned to your trade and your patch.",
+    outcomes: [
+      "Rank in the Google map pack",
+      "Ads that pay back from week one",
+      "A site built to book jobs, not just look good",
+    ],
   },
   {
-    slug: "google-ads",
-    icon: Target,
-    title: "Google Ads That Pay Back",
-    benefit: "Get leads in 48 hours. Scale what works, kill what doesn't.",
-    outcomes: ["Call-only campaigns", "Service-area targeting", "No wasted click spend"],
+    icon: Zap,
+    title: "Win every lead",
+    benefit:
+      "AI replies in 60 seconds, qualifies the job, drafts the quote and chases till they say yes or no.",
+    outcomes: [
+      "Replies day or night, in your voice",
+      "Same-day quotes, no more 10pm kitchen-table sessions",
+      "Booked jobs straight to your calendar",
+    ],
   },
   {
-    slug: "websites",
-    icon: Monitor,
-    title: "Tradie Websites That Convert",
-    benefit: "Fast, mobile-first, built to turn visitors into booked jobs.",
-    outcomes: ["Loads in under 2 seconds", "Click-to-call everywhere", "Quote forms that actually work"],
+    icon: Repeat,
+    title: "Keep customers coming back",
+    benefit:
+      "Review chases, follow-ups and seasonal nudges so the customer you won today rings you again next year.",
+    outcomes: [
+      "Auto Google review requests after every job",
+      "Maintenance reminders that bring repeat work",
+      "Referral loops that bring their mates in",
+    ],
   },
   {
-    slug: "ai-automation",
-    icon: Bot,
-    title: "AI Lead Follow-Up",
-    benefit: "Never miss a lead again. AI qualifies and books them while you're on the tools.",
-    outcomes: ["Instant SMS response", "Qualifies before you call", "Syncs to your calendar"],
+    icon: Workflow,
+    title: "Smooth out the admin",
+    benefit:
+      "Quotes, invoices, scheduling and follow-ups handled in the background while you're on the tools.",
+    outcomes: [
+      "Invoices chased automatically until paid",
+      "Bookings without the back-and-forth",
+      "8–10 hours a week back, on average",
+    ],
   },
 ];
 
@@ -43,13 +59,13 @@ export function ServicesGrid() {
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-action)]">
-              What we build for you
+              The whole system
             </p>
             <h2
               id="services-heading"
               className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
             >
-              Four systems. One goal — more booked jobs.
+              Four parts. One running business.
             </h2>
           </div>
           <Link
@@ -62,11 +78,10 @@ export function ServicesGrid() {
         </div>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {services.map(({ slug, icon: Icon, title, benefit, outcomes }) => (
-            <Link
-              key={slug}
-              href={`/services/${slug}`}
-              className="group flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-8 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+          {services.map(({ icon: Icon, title, benefit, outcomes }) => (
+            <div
+              key={title}
+              className="flex flex-col rounded-xl border border-[var(--color-border)] bg-white p-8 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <span
                 className="inline-flex h-12 w-12 items-center justify-center rounded-lg bg-[var(--color-primary)]/5 ring-1 ring-inset ring-[var(--color-primary)]/10"
@@ -91,13 +106,13 @@ export function ServicesGrid() {
                   </li>
                 ))}
               </ul>
-              <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] transition-colors group-hover:text-[var(--color-action)]">
-                Learn more
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-              </span>
-            </Link>
+            </div>
           ))}
         </div>
+
+        <p className="mt-10 text-center text-sm text-[var(--color-muted-foreground)]">
+          Take all four, or just the bit that&apos;s broken. We won&apos;t push.
+        </p>
       </div>
     </section>
   );

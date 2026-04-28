@@ -1,9 +1,7 @@
-import { Star } from "lucide-react";
-
-const proofItems = [
-  { label: "Rated 5.0 on Google", stars: 5 },
-  { label: "200+ tradies served", stars: null },
-  { label: "Based in Sydney · Serving all of NSW", stars: null },
+const pillars = [
+  "Marketing that brings the work in",
+  "AI that wins the lead before the next bloke does",
+  "Systems that keep customers coming back",
 ];
 
 export function ProofBand() {
@@ -13,13 +11,13 @@ export function ProofBand() {
       className="border-y border-[var(--color-border)] bg-white"
     >
       <h2 id="proof-heading" className="sr-only">
-        Social proof
+        What ClickSmith does
       </h2>
       <div className="mx-auto max-w-7xl px-6 py-6 lg:px-8">
         <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-semibold text-[var(--color-muted-foreground)]">
-          {proofItems.map((item, i) => (
+          {pillars.map((label, i) => (
             <li
-              key={item.label}
+              key={label}
               className={
                 "inline-flex items-center gap-2 " +
                 (i > 0
@@ -27,20 +25,7 @@ export function ProofBand() {
                   : "")
               }
             >
-              {item.stars !== null && (
-                <span
-                  className="inline-flex items-center gap-0.5"
-                  aria-hidden="true"
-                >
-                  {Array.from({ length: item.stars }).map((_, idx) => (
-                    <Star
-                      key={idx}
-                      className="h-4 w-4 fill-[var(--color-warning)] text-[var(--color-warning)]"
-                    />
-                  ))}
-                </span>
-              )}
-              <span>{item.label}</span>
+              <span>{label}</span>
             </li>
           ))}
         </ul>

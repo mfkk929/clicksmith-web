@@ -2,36 +2,36 @@ import { ChevronDown } from "lucide-react";
 
 const faqItems = [
   {
+    q: "What does \"we don't just bring leads\" actually mean?",
+    a: "Most agencies stop the moment a lead lands in your inbox. We bring the lead AND install the AI that replies in 60 seconds, drafts the quote in your voice, follows up till they say yes or no, then keeps that customer on a string so they ring you again next year. Marketing is one part. The system around it is the rest.",
+  },
+  {
+    q: "Do I have to take everything, or can I pick parts?",
+    a: "Pick what's broken. If your marketing's fine but leads die in your inbox, we just install the follow-up. If your admin is killing you but your phone's quiet, we fix both. We won't push you to buy bits you don't need.",
+  },
+  {
+    q: "What's the AI part — is it complicated to use?",
+    a: "You don't use it. We install it, train it on your voice and your prices, and it runs inside the tools you already have (Gmail, ServiceM8, Tradify, Xero, etc.). Most clients never touch a new app. Their week just gets quieter.",
+  },
+  {
     q: "How much does it cost?",
-    a: "Most tradies invest $2–4k/month with us for done-for-you marketing. That's less than one missed job for most trades. We build a plan in the free audit so you'll know the number before anything's signed. Prefer DIY? Playbooks start at $49.",
+    a: "Done-for-you setups generally sit between $2–4k/month depending on what you take. We work out the exact number in the free audit so you'll know before signing anything. Prefer to do it yourself? The playbooks are free while we're early.",
   },
   {
     q: "Am I locked in?",
-    a: "No. Month-to-month. If we're not making your phone ring, you leave — and you keep your website, ad accounts, and Google Business Profile. We don't hold your marketing hostage.",
+    a: "No. Month-to-month. You own your website, ad accounts, Google Business Profile and every workflow we build. If we're not earning our keep, you walk and keep the lot.",
   },
   {
-    q: "I tried marketing before and it didn't work. Why is this different?",
-    a: "Because most 'marketing agencies' don't get trades. They sell vanity metrics. We only track one thing: booked jobs. If your cost-per-job isn't dropping month over month, we're not doing our job.",
+    q: "You're a startup. Why should I trust you?",
+    a: "Honest answer: because we'll tell you what's actually wrong with your business in the audit even if you don't hire us, because we don't lock you in, because the founder's name is on it, and because we're picking our first wave of clients carefully — we'd rather have one happy plumber than ten so-so ones. If you want a 200-person agency with a glossy deck, we're not it.",
   },
   {
     q: "Do you work with my trade?",
-    a: "If your customers search Google to find someone like you — yes. Plumbers, sparkies, solar, builders, roofers, HVAC, painters, concreters, landscapers, carpenters, tilers, glaziers. 30+ trades and counting.",
+    a: "If your customers Google to find someone like you — yes. Plumbers, sparkies, builders, solar, roofers, HVAC, painters, concreters, landscapers, renovators, pest control. Each trade gets the system tuned for how its customers actually search and decide.",
   },
   {
-    q: "How long until I see leads?",
-    a: "Google Ads can bring leads in 48 hours. Local SEO builds over 3–6 months but pays back for years. We usually run both — fast wins while the long-term plays compound.",
-  },
-  {
-    q: "What makes you different from hipages or Airtasker?",
-    a: "Directories sell the same lead to 5 tradies. You race to the bottom on price. We build YOUR marketing, on YOUR website, bringing YOU exclusive leads. Once it's running, you don't pay per lead.",
-  },
-  {
-    q: "What if I want to do everything myself?",
-    a: "Buy the playbook. Same systems, written step-by-step, with templates and scripts. Most tradies who DIY need 5–10 hours/week. If that's too much, we're here when you're ready.",
-  },
-  {
-    q: "Can you help me rank in Google Maps?",
-    a: "That's literally step one. Most tradie searches happen in Google Maps — 'plumber near me', 'emergency electrician Wollongong'. We optimise your Google Business Profile, build local citations, and earn real reviews. That's how you win the map pack.",
+    q: "I'm not techy. Will I be able to handle this?",
+    a: "Yes. Everything's installed for you. You get one simple dashboard and a number to text when you want anything changed. No new apps to learn, no training, no \"strategy decks.\" If something needs your input, it's a one-tap approval on your phone.",
   },
 ];
 

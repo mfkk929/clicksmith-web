@@ -25,15 +25,16 @@ export function PlaybooksStrip() {
                 id="playbooks-heading"
                 className="mt-4 font-display text-3xl font-bold leading-tight text-white md:text-4xl"
               >
-                Prefer to run marketing yourself?{" "}
+                Want to do it yourself?{" "}
                 <span className="text-[var(--color-action)]">
-                  Get the exact playbook we use.
+                  Take the playbooks. Free.
                 </span>
               </h2>
               <p className="mt-4 max-w-xl text-lg text-white/75">
-                Step-by-step systems for local SEO, Google Ads, and Google
-                Business Profile — the same ones behind the case studies above.
-                Own your marketing. Pay once.
+                The same systems we install for paying clients — marketing, lead
+                follow-up, customer retention, admin. Step-by-step. Yours to
+                keep. We&rsquo;re early, so we&rsquo;re giving them away while
+                we&rsquo;re building the brand.
               </p>
             </div>
             <div className="flex flex-col items-start gap-3 md:items-end">
@@ -44,7 +45,7 @@ export function PlaybooksStrip() {
                 </Button>
               </Link>
               <p className="text-sm text-white/60">
-                From <span className="tabular-nums font-semibold text-white">$49</span>. Lifetime updates.
+                Free for now. No card needed.
               </p>
             </div>
           </div>

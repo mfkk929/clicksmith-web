@@ -1,23 +1,23 @@
-import { Search, Wrench, BellRing } from "lucide-react";
+import { Megaphone, Zap, Repeat } from "lucide-react";
 
 const steps = [
   {
     number: "01",
-    icon: Search,
-    title: "Free lead audit",
-    body: "30-minute call. We dig into your current marketing, your trade, and your patch. You leave with a clear plan — even if you don't hire us.",
+    icon: Megaphone,
+    title: "Bring the right work in",
+    body: "Local SEO, Google Ads and a website built to convert — tuned to bring you the kind of jobs you actually want, not the price-shoppers and tyre-kickers.",
   },
   {
     number: "02",
-    icon: Wrench,
-    title: "We build the system",
-    body: "Website, local SEO, Google Ads, Google Business Profile, AI-powered lead follow-up. Set up in 2–3 weeks. Nothing held hostage on our server.",
+    icon: Zap,
+    title: "Win it before the next bloke does",
+    body: "AI replies to every lead in under 60 seconds, drafts the quote in your voice, and chases until they say yes or no. The fastest tradie wins. We make sure that's you.",
   },
   {
     number: "03",
-    icon: BellRing,
-    title: "Jobs land on your phone",
-    body: "Real leads — not directory tyre-kickers. Weekly report shows what's working. Scale up the wins, cut the duds.",
+    icon: Repeat,
+    title: "Keep them coming back",
+    body: "Automated follow-ups, review chases and seasonal nudges so the customer you won today rings you again next year — and sends a mate too.",
   },
 ];
 
@@ -36,10 +36,10 @@ export function HowItWorks() {
             id="how-heading"
             className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
           >
-            Three steps from chasing jobs to booking them.
+            Bring it. Win it. Keep it.
           </h2>
           <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-            No jargon. No long contracts. No "strategy decks" you'll never read.
+            That&apos;s the whole game. Most agencies stop at the first one. We do all three.
           </p>
         </div>
 

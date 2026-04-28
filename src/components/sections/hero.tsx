@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Phone, ShieldCheck, Star } from "lucide-react";
+import { ArrowRight, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { AuditForm } from "@/components/forms/audit-form";
 import { siteConfig } from "@/lib/site";
@@ -19,22 +19,23 @@ export function Hero() {
             {/* Eyebrow */}
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-secondary)]">
               <span className="h-2 w-2 rounded-full bg-[var(--color-action)]" />
-              Marketing for Australian tradies
+              Marketing & AI systems for Australian tradies
             </p>
 
             {/* H1 — the LCP element */}
             <h1 className="text-[2.5rem] leading-[1.05] md:text-[3.5rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-primary)]">
-              More tradie jobs on your calendar.{" "}
+              We don&apos;t just bring you leads.{" "}
               <span className="text-[var(--color-action)]">
-                Less time chasing them.
+                We win them, keep them, and run the ops behind it all.
               </span>
             </h1>
 
             {/* Subhead */}
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-[var(--color-muted-foreground)] md:text-xl">
-              Lead-generating websites, local SEO and Google Ads for
-              tradespeople across NSW. Book more jobs — without relying on word
-              of mouth.
+              Marketing, sales follow-up, customer retention and smooth admin —
+              done by ClickSmith and AI working together. So you book more
+              jobs, keep more customers, and stay on top of what you actually
+              want to be doing.
             </p>
 
             {/* CTAs — on mobile, primary scrolls to the form further down.
@@ -42,13 +43,13 @@ export function Hero() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a href="#audit-form" className="lg:hidden">
                 <Button variant="action" size="lg" className="w-full sm:w-auto">
-                  Get my free lead audit
+                  Book my free 30-min audit
                   <ArrowRight className="h-5 w-5" aria-hidden="true" />
                 </Button>
               </a>
-              <Link href="/playbooks">
+              <Link href="/services">
                 <Button variant="ghost" size="lg" className="w-full sm:w-auto">
-                  Or grab the DIY playbook
+                  Show me what&apos;s included
                 </Button>
               </Link>
             </div>
@@ -60,17 +61,17 @@ export function Hero() {
                   className="h-4 w-4 text-[var(--color-success)]"
                   aria-hidden="true"
                 />
-                No lock-in contracts
+                Australian team
               </li>
               <li className="inline-flex items-center gap-1.5">
-                <span aria-hidden="true">·</span> Australian team
+                <span aria-hidden="true">·</span> Immigrant founder
               </li>
               <li className="inline-flex items-center gap-1.5">
-                <Star
-                  className="h-4 w-4 fill-[var(--color-warning)] text-[var(--color-warning)]"
+                <Sparkles
+                  className="h-4 w-4 text-[var(--color-action)]"
                   aria-hidden="true"
                 />
-                <span className="tabular-nums">5.0</span> Google rating
+                Helping tradies win the AI era
               </li>
             </ul>
 
