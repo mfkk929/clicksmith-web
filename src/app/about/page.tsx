@@ -15,14 +15,14 @@ import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About ClickSmith | Marketing Built for Australian Tradies",
+  title: "About ClickSmith | Marketing & AI Systems for Australian Tradies",
   description:
-    "We're an Australian marketing team that only works with tradies and home services. Built by people who've seen the missed-call tax up close. Here's why we exist.",
+    "ClickSmith is an Australian startup helping tradies win in the AI era. Marketing wired into lead follow-up, customer retention and smooth admin — built by an operator, not a media buyer.",
   alternates: { canonical: `${siteConfig.url}/about` },
   openGraph: {
-    title: "About ClickSmith | Marketing Built for Australian Tradies",
+    title: "About ClickSmith | Marketing & AI Systems for Australian Tradies",
     description:
-      "An Australian marketing team that only works with tradies. Why we exist, what we believe, who we are.",
+      "An Aussie startup helping tradies win in the AI era. Marketing, follow-up, retention and admin — wired together.",
     url: `${siteConfig.url}/about`,
     siteName: siteConfig.name,
     type: "website",
@@ -31,44 +31,44 @@ export const metadata: Metadata = {
 
 const beliefs = [
   {
-    title: "Tradies hate marketing wank, and they're right to",
-    body: "Most agencies pitch ROAS and funnels and synergies. Tradies want to know if the phone's ringing and the calendar's full. We translate marketing into both of those.",
+    title: "Marketing alone doesn't move the needle",
+    body: "Most agencies dump leads on you and walk off. If those leads die in your inbox or the customer never comes back, the marketing was a waste. We wire the marketing into your follow-up, your retention, your admin. The whole machine — or nothing.",
   },
   {
-    title: "If we can't measure it, we don't bill for it",
-    body: "Every retainer ties back to leads, calls, and quotes. If the dashboard goes flat, we have an uncomfortable conversation — not an excuse.",
-  },
-  {
-    title: "Local always beats national",
-    body: "A Wollongong plumber and a Sydney plumber win work in different ways. We don't run one playbook over twelve trades. We run twelve.",
+    title: "AI does the boring stuff. You do the trade.",
+    body: "You shouldn't need to learn a single new app. We install the AI inside the tools you already use — your inbox, your quoting tool, your Xero. Then it runs in the background while you're up the ladder.",
   },
   {
     title: "Honest beats clever",
-    body: "We've turned down jobs because the maths didn't work. We've told tradies their existing GBP was fine. The audit was named the audit because that's what it is.",
+    body: "No fake \"5.0 Google ratings.\" No \"200+ tradies served.\" We're a startup and we say so. We earn the work month-to-month. If we're not paying for ourselves, you walk and keep everything we built.",
+  },
+  {
+    title: "Each trade wins differently",
+    body: "A plumber's customer journey isn't a pool builder's. A roofer's seasonal play isn't a renovator's. We tune the whole system — marketing, follow-up, retention — to how your trade actually wins, wins again, and gets referred.",
   },
 ];
 
 const principles = [
   {
     icon: Target,
-    title: "Trade-specific from day one",
-    body: "Same playbook for every trade is why most agencies don't last. We start with how your specific trade actually wins work and build the marketing around that.",
+    title: "Built by an operator, not a media buyer",
+    body: "I came up in business coaching for tradies — pricing, hiring, systems, profit. ClickSmith looks at the whole business, not just the ad spend. That's the difference.",
   },
   {
     icon: HeartHandshake,
     title: "No lock-in contracts",
-    body: "Month-to-month, always. If we're not earning the retainer, you should be free to walk. That's the discipline that keeps us honest.",
+    body: "Month-to-month, always. You own your website, your ad accounts, your Google profile, every workflow we build. If we're not earning the retainer, you walk and keep the lot.",
   },
   {
     icon: Compass,
-    title: "AU team, AU phone numbers, AU hours",
-    body: "We don't outsource your account to writers in three time zones. The team that builds your strategy is the team that picks up the phone.",
+    title: "AU team, AU tools, AU hours",
+    body: "We don't outsource your account to writers in three time zones. The team that builds your system is the team that picks up the phone.",
   },
 ];
 
 const stats = [
-  { value: "12", label: "Trades we specialise in" },
-  { value: "100%", label: "AU-based team" },
+  { value: "1", label: "Founder, hands-on" },
+  { value: "100%", label: "Built in Australia" },
   { value: "$0", label: "Lock-in contracts" },
 ];
 
@@ -159,13 +159,14 @@ export default function AboutPage() {
               id="hero-title"
               className="text-4xl font-bold leading-[1.05] tracking-tight text-[var(--color-primary)] md:text-5xl lg:text-6xl"
             >
-              Marketing built by people who actually understand how tradies win work.
+              Built by an operator. For Australian tradies in the AI era.
             </h1>
             <p className="mt-6 max-w-2xl text-lg text-[var(--color-muted-foreground)] md:text-xl">
-              We're a small Australian team. We only work with tradies and
-              home services. We exist because the gap between what marketing
-              agencies promise and what tradies actually need is enormous —
-              and someone needs to fix it.
+              I&apos;m Furqan — immigrant founder, ex-business coach for
+              tradies. ClickSmith is what I wish those owners had: marketing
+              wired into the rest of their business, with AI handling the
+              boring stuff. So you book more work, keep more customers, and
+              stop running the whole show on your own.
             </p>
           </div>
         </div>
@@ -201,42 +202,44 @@ export default function AboutPage() {
                 id="story-title"
                 className="text-3xl font-bold text-[var(--color-primary)] md:text-4xl"
               >
-                Why we exist
+                Why ClickSmith exists
               </h2>
               <div className="mt-8 space-y-6 text-lg leading-relaxed text-[var(--color-muted-foreground)]">
                 <p>
-                  The first time we sat across from a tradie talking about
-                  marketing, he said two things in 30 seconds. "Last quarter I
-                  lost forty grand because I missed calls on Saturdays." And:
-                  "The last agency I hired never called me back after they
-                  got the deposit."
+                  I came up in business coaching for Australian tradies. The
+                  good ones, the burnt-out ones, the ones quietly going broke
+                  while their phones rang off the hook.
                 </p>
                 <p>
-                  Both problems were fixable in an afternoon. The missed-call
-                  recovery alone — an SMS auto-reply plus a 30-minute callback
-                  window — would have saved most of that forty grand. The
-                  agency problem was solved by ending the contract.
+                  The pattern was always the same. The owner was the
+                  bottleneck. Admin was killing them. Quoting from the kitchen
+                  table at 10pm. Customers from last year, never followed up.
+                  Leads from this morning, missed because they were on a job.
+                  And the agency they&apos;d hired six months ago — gone quiet
+                  the day after the deposit cleared.
                 </p>
                 <p className="text-[var(--color-primary)]">
-                  We started ClickSmith because that conversation kept
-                  happening, with different tradies, in different trades, in
-                  different suburbs. The pain was always the same:{" "}
+                  ClickSmith is what I wish those owners had:{" "}
                   <strong>
-                    the phone wasn't ringing, or it was, and nobody picked up
+                    marketing, AI follow-up, customer retention and smooth
+                    admin — wired together as one running machine
                   </strong>
-                  . Marketing agencies were charging $5K a month and not
-                  solving either thing.
+                  . Most agencies sell you the front of the funnel and walk
+                  off. We do the whole loop, or we don&apos;t take the work.
                 </p>
                 <p>
-                  We built a simple model. Trade-specific playbooks. AU-based
-                  team. Month-to-month retainers — no lock-ins. Honest audits
-                  first, work second. The retainer earns its keep every month
-                  or the operator should be free to walk.
+                  I&apos;m an immigrant. I built this in Australia, for
+                  Australian tradies. There&apos;s me and a small team of
+                  trusted hands — not a 200-person agency machine. We&apos;re
+                  picking our first wave of clients carefully. We&apos;d
+                  rather have one happy plumber than ten so-so ones.
+                  We&apos;re new. We say so. We earn the work month-to-month,
+                  no lock-ins, no fine print.
                 </p>
                 <p>
-                  That's the whole story. We help tradies fill the calendar
-                  and answer the phone. The rest is just channels and
-                  execution.
+                  That&apos;s the whole story. We help tradies fill the
+                  calendar, win the work, keep the customers, and get their
+                  evenings back. The rest is execution.
                 </p>
               </div>
             </div>
@@ -280,7 +283,7 @@ export default function AboutPage() {
               Four things we believe
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              Pick the agency whose worldview matches yours. Here's ours, in
+              Pick the team whose worldview matches yours. Here&apos;s ours, in
               plain English.
             </p>
           </div>
@@ -358,9 +361,9 @@ export default function AboutPage() {
               </h2>
               <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
                 Twelve trades, all home-services adjacent, mostly in NSW with
-                clients across AU. We're best fit for operators with crews of
-                1-15 — past the side-hustle stage, not yet bringing marketing
-                fully in-house.
+                clients across Australia. Best fit for owner-operators with
+                crews of 1–15 — past the side-hustle stage, not yet bringing
+                marketing fully in-house.
               </p>
               <div className="mt-8">
                 <Link href="/trades">
@@ -403,10 +406,10 @@ export default function AboutPage() {
             Built in NSW. Working with tradies across Australia.
           </h2>
           <p className="mt-6 text-lg text-[var(--color-muted-foreground)]">
-            Our team is based in NSW. Our clients are in Sydney, Wollongong,
-            the Illawarra, the Hunter, the South Coast, and increasingly
-            across VIC and QLD. The marketing fundamentals are the same —
-            only the local SEO and competitive landscape change.
+            Based in NSW. Working with tradies in Sydney, Wollongong, the
+            Illawarra, the Hunter, the South Coast, and increasingly across
+            VIC and QLD. The fundamentals are the same — only the local SEO
+            and competitive landscape change.
           </p>
         </div>
       </section>
@@ -421,11 +424,12 @@ export default function AboutPage() {
             id="cta-title"
             className="text-3xl font-bold text-[var(--color-on-primary)] md:text-5xl"
           >
-            Want to see what we'd actually do for your business?
+            Want to see what the whole machine looks like for your business?
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-on-primary)]/80">
-            Book the free 30-minute audit. We pull up your numbers, tell you
-            where the leakage is, hand you a 1-pager. No pitch on the call.
+            Book a free 30-min audit. We pull up your numbers, show you where
+            leads, customers and hours are leaking — and exactly what
+            it&apos;d take to plug each one. No pitch.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/audit">
