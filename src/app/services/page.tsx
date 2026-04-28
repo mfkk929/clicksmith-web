@@ -6,34 +6,32 @@ import {
   ChevronDown,
   Phone,
   ShieldCheck,
-  Star,
   Sparkles,
   Database,
   Zap,
-  TrendingUp,
-  Target,
-  Monitor,
-  Bot,
+  Megaphone,
+  Repeat,
+  Workflow,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 // =====================================================================
-// METADATA — page-level SEO
+// METADATA
 // =====================================================================
 
 export const metadata: Metadata = {
-  title: "Marketing Services for Tradies — Local SEO, Google Ads, Websites & AI",
+  title: "Marketing & AI Systems for Australian Tradies | ClickSmith",
   description:
-    "Done-for-you marketing services for Australian tradies. Local SEO, Google Ads, lead-generating websites, and AI follow-up. Book more jobs — without word of mouth.",
+    "ClickSmith brings the work in, wins the lead, keeps the customer and runs the admin behind it. Marketing, AI follow-up, customer retention and ops — wired together for Australian tradies.",
   alternates: {
-    canonical: `${siteConfig.url}/services`,
+    canonical: siteConfig.url + "/services",
   },
   openGraph: {
-    title: "Marketing Services for Tradies | ClickSmith",
+    title: "Marketing & AI Systems for Australian Tradies | ClickSmith",
     description:
-      "Local SEO, Google Ads, lead-generating websites, and AI follow-up for Aussie tradies. Book more jobs — without word of mouth.",
-    url: `${siteConfig.url}/services`,
+      "Marketing wired into AI follow-up, customer retention and smooth admin. The whole loop, built for Aussie tradies.",
+    url: siteConfig.url + "/services",
     type: "website",
   },
 };
@@ -44,67 +42,64 @@ export const metadata: Metadata = {
 
 const painPoints = [
   "Phone's been quiet for weeks and you don't know why",
-  "Posting job photos but nobody is calling",
-  "Tried Facebook ads, burned the cash, never again",
-  "Watched the competition get booked while you sat waiting",
+  "Phone rings, but it's all price-shoppers and tyre-kickers",
+  "Leads landed in your inbox last week and you never got back to them",
+  "Customers from last year? Gone. Never followed up.",
+  "Quoting from the kitchen table at 10pm, again",
 ];
 
 const services = [
   {
-    slug: "seo",
-    icon: TrendingUp,
-    title: "Local SEO for Tradies",
+    icon: Megaphone,
+    title: "Bring the right work in",
     benefit:
-      "Rank #1 in Google Maps when locals search your trade. Map pack in 90 days.",
+      "Local SEO, Google Ads and a website built to convert — tuned to attract the kind of jobs you actually want.",
     outcomes: [
-      "Show up in the map pack for '[trade] near me'",
-      "Optimised Google Business Profile + reviews engine",
-      "Local citations + NAP consistency across the web",
-      "Suburb-level service pages for every area you cover",
+      "Rank in the Google map pack for 'near me' searches",
+      "Ads that pay back from week one (no wasted clicks)",
+      "A site loaded fast, mobile-first, built to book jobs not just look pretty",
+      "Suburb-level service pages for every patch you cover",
     ],
-    forWho: "Best for tradies whose customers Google their trade.",
+    forWho: "If your phone's quiet — or it's loud with the wrong jobs.",
   },
   {
-    slug: "google-ads",
-    icon: Target,
-    title: "Google Ads That Pay Back",
+    icon: Zap,
+    title: "Win every lead",
     benefit:
-      "Get leads in 48 hours. Scale what works. Kill what doesn't. No wasted clicks.",
+      "AI replies in 60 seconds, qualifies the job, drafts the quote and chases until they say yes or no.",
     outcomes: [
-      "Call-only campaigns for emergency trades",
-      "Service-area + suburb targeting",
-      "Negative keywords list specific to tradies",
-      "Weekly review: cost-per-job, not cost-per-click",
+      "Replies day or night, in your voice, from your inbox",
+      "Same-day quotes — no more 10pm kitchen-table sessions",
+      "Auto follow-up at 48 hrs / 7 days / 14 days",
+      "Booked jobs straight to your calendar",
     ],
-    forWho: "Best for emergency trades + anyone who needs leads this week.",
+    forWho: "If you're losing leads to slow follow-up — or just losing track.",
   },
   {
-    slug: "websites",
-    icon: Monitor,
-    title: "Tradie Websites That Convert",
+    icon: Repeat,
+    title: "Keep customers coming back",
     benefit:
-      "Fast, mobile-first, built to turn visitors into booked jobs — not just look pretty.",
+      "Review chases, follow-ups and seasonal nudges so the customer you won today rings you again next year.",
     outcomes: [
-      "Loads in under 2 seconds (Core Web Vitals all green)",
-      "Click-to-call + tap-to-message everywhere",
-      "Quote forms that actually work on a phone",
-      "Designed for the AI search era — schema, FAQs, structured content",
+      "Auto Google review request after every job",
+      "Maintenance reminders that bring repeat work",
+      "Seasonal campaigns to past customers (gutters before storm season, AC before summer)",
+      "Referral loops that bring their mates in",
     ],
-    forWho: "Best for tradies whose website is over 3 years old or built in WordPress.",
+    forWho: "If you do the job and never speak to the customer again.",
   },
   {
-    slug: "ai-automation",
-    icon: Bot,
-    title: "AI Lead Follow-Up",
+    icon: Workflow,
+    title: "Smooth out the admin",
     benefit:
-      "Never miss a lead again. AI qualifies and books them while you're on the tools.",
+      "Quotes, invoices, scheduling and follow-ups handled in the background while you're on the tools.",
     outcomes: [
-      "Instant SMS response to every form fill",
-      "AI chatbot pre-qualifies before you get involved",
-      "Auto-quote follow-ups at 48 hrs, 7 days, 14 days",
-      "Syncs to your calendar — booked while you're on a job",
+      "Invoices chased automatically until paid",
+      "Bookings without the back-and-forth",
+      "One simple dashboard for jobs, leads and cash",
+      "8–10 hours a week back, on average",
     ],
-    forWho: "Best for tradies losing 30%+ of leads to slow follow-up.",
+    forWho: "If admin is eating your evenings and weekends.",
   },
 ];
 
@@ -112,86 +107,67 @@ const differentiators = [
   {
     icon: Sparkles,
     title: "Built for the AI era",
-    body: "Most agencies are still selling 2018 playbooks. We use 2026 tools — AI follow-ups, AI chatbots, AI-drafted content. The work gets done faster, cheaper, better.",
+    body: "Most agencies are still selling 2018 playbooks. We use 2026 tools — AI follow-ups, AI-drafted quotes, AI review chases. So the work gets done while you're up the ladder.",
   },
   {
     icon: Zap,
-    title: "Productized + done-for-you",
-    body: "Buy a $49 playbook and run it yourself. Or hand it to us. Same systems, three ways to engage. No high-pressure consult call required.",
+    title: "Whole machine, not just one part",
+    body: "Marketing alone won't fix it if leads die in your inbox or customers vanish after one job. We bring the work, win it, keep it, and run the ops behind it. The whole loop, or nothing.",
   },
   {
     icon: Database,
-    title: "Data-first decisions",
-    body: "Every channel measured, every dollar tracked. If a channel isn't producing in 90 days, we kill it. No vanity metrics. One number we care about: booked jobs.",
+    title: "Honest from minute one",
+    body: "No fake \"5.0 ratings.\" No \"200+ tradies served.\" We're a startup. We say so. We earn the work month-to-month. If we're not paying for ourselves, you walk and keep the lot.",
   },
 ];
 
 const processSteps = [
   {
     step: "1",
-    title: "Free Diary Audit",
-    desc: "30-min review of your current marketing. We find what's leaking.",
+    title: "Free 30-min audit",
+    desc: "We look at your marketing, your follow-up and your admin. Tell you exactly what's leaking.",
   },
   {
     step: "2",
-    title: "Strategy",
-    desc: "Custom plan based on your trade, location, and where leads come from now.",
+    title: "Map the gaps",
+    desc: "1-page plan. What's working, what's broken, what to fix first. Yours to keep, even if you don't hire us.",
   },
   {
     step: "3",
-    title: "Build + Launch",
-    desc: "We set up the AI stack, launch campaigns, automate the boring stuff.",
+    title: "Install the system",
+    desc: "Pick what you need — one part or the whole loop. We wire it into the tools you already use.",
   },
   {
     step: "4",
-    title: "Measure + Scale",
-    desc: "Weekly reviews. Monthly optimisation. Compounding results, not promises.",
-  },
-];
-
-const testimonials = [
-  {
-    name: "Jake M.",
-    trade: "Sparky",
-    suburb: "Wollongong NSW",
-    quote:
-      "Phone hadn't rung properly in months. ClickSmith fixed our GBP, ran one ad campaign, and we booked 14 jobs in 6 weeks.",
-    result: "+$18,400 in 6 weeks",
-  },
-  {
-    name: "Bec H.",
-    trade: "Plumber",
-    suburb: "Kiama NSW",
-    quote:
-      "Finally have a system. The AI follow-ups alone have closed quotes I used to lose. Worth every dollar.",
-    result: "Close rate 11% → 32%",
-  },
-  {
-    name: "Danny T.",
-    trade: "Solar",
-    suburb: "Shellharbour NSW",
-    quote:
-      "Was running my own ads for 2 years and getting nowhere. ClickSmith took over and within 60 days I was booked solid.",
-    result: "Booked 3 months ahead",
+    title: "Earn it monthly",
+    desc: "Weekly check-ins. Monthly reviews. Month-to-month, no lock-in. We keep the work by being worth it.",
   },
 ];
 
 const faqs = [
   {
-    q: "What's actually included in your services?",
-    a: "Local SEO + Google Business Profile, Google Ads management, lead-generating websites, and AI follow-up automation. Most tradies use a combination — we recommend the right mix based on your trade and goals during the free audit.",
+    q: "What's actually included?",
+    a: "Marketing (Local SEO, Google Ads, website) — bringing the work in. AI lead follow-up — replies, quotes, chasing, booking. Customer retention — reviews, repeat work, referrals. Admin automation — invoices, scheduling, dashboards. Pick one or take the lot.",
+  },
+  {
+    q: "Do I have to take everything?",
+    a: "No. Pick what's broken. If your marketing's fine but leads die in your inbox, we just install the follow-up. If the work's flowing but admin is killing you, we just do that. We won't push you to buy bits you don't need.",
   },
   {
     q: "How much does it cost?",
-    a: "Most tradies invest $2–4k/month with us for done-for-you marketing. That's less than one missed job for most trades. We build a custom plan in the free audit — you'll know the exact number before anything's signed. Prefer DIY? Playbooks start at $49.",
+    a: "Done-for-you setups generally sit between $2–4k/month depending on what you take. We work out the exact number in the free audit so you'll know before signing anything. Prefer to do it yourself? The playbooks are free while we're early.",
   },
   {
     q: "Am I locked in?",
-    a: "No. Month-to-month. If we're not making your phone ring, you leave — and you keep your website, ad accounts, and Google Business Profile. We don't hold your marketing hostage.",
+    a: "No. Month-to-month. You own your website, ad accounts, Google Business Profile and every workflow we build. If we're not earning the retainer, you walk and keep the lot.",
   },
   {
-    q: "How long until I see leads?",
-    a: "Google Ads can bring leads in 48 hours. Local SEO builds over 3–6 months but pays back for years. We usually run both — fast wins while the long-term plays compound.",
+    q: "What's the AI part — is it complicated?",
+    a: "You don't use it. We install it, train it on your voice and your prices, and it runs inside the tools you already have (Gmail, ServiceM8, Tradify, Xero). Most clients never touch a new app — their week just gets quieter.",
+  },
+  {
+    q: "How long until I see results?",
+    a: "Google Ads can bring leads in 48 hours. SEO builds over 3–6 months but pays back for years. Admin/follow-up automation pays back the first week — most owners get 8–10 hours a week back inside the first month.",
   },
   {
     q: "How is this different from hipages, Airtasker, or ServiceSeeking?",
@@ -199,7 +175,7 @@ const faqs = [
   },
   {
     q: "What trades do you work with?",
-    a: "If your customers search Google to find someone like you — yes. Plumbers, sparkies, builders, painters, landscapers, HVAC, carpenters, tilers, roofers, handymen, solar installers, concreters, glaziers. 30+ trades and counting.",
+    a: "If your customers Google to find someone like you — yes. Plumbers, sparkies, builders, painters, landscapers, HVAC, roofers, solar, concreters, pest control, and more. Each trade gets the system tuned to how its customers actually search and decide.",
   },
 ];
 
@@ -212,13 +188,13 @@ function ServicesJsonLd() {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "@id": `${siteConfig.url}/services#service`,
-      name: "Marketing Services for Tradies",
-      provider: { "@id": `${siteConfig.url}/#business` },
-      serviceType: "Marketing Service",
+      "@id": siteConfig.url + "/services#service",
+      name: "Marketing & AI Systems for Tradies",
+      provider: { "@id": siteConfig.url + "/#business" },
+      serviceType: "Marketing & Business Automation",
       areaServed: { "@type": "Country", name: "Australia" },
       description:
-        "Done-for-you marketing services for Australian tradies — local SEO, Google Ads, lead-generating websites, and AI follow-up automation.",
+        "Done-for-you marketing, AI lead follow-up, customer retention and admin automation for Australian tradies — the whole loop, wired together.",
       offers: {
         "@type": "AggregateOffer",
         priceCurrency: "AUD",
@@ -234,13 +210,13 @@ function ServicesJsonLd() {
           "@type": "ListItem",
           position: 1,
           name: "Home",
-          item: `${siteConfig.url}/`,
+          item: siteConfig.url + "/",
         },
         {
           "@type": "ListItem",
           position: 2,
           name: "Services",
-          item: `${siteConfig.url}/services`,
+          item: siteConfig.url + "/services",
         },
       ],
     },
@@ -279,17 +255,19 @@ export default function ServicesPage() {
           <div className="max-w-3xl">
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-white px-3 py-1 text-xs font-semibold uppercase tracking-wider text-[var(--color-secondary)]">
               <span className="h-2 w-2 rounded-full bg-[var(--color-action)]" />
-              Marketing services for tradies
+              Marketing & AI systems for Australian tradies
             </p>
             <h1 className="text-[2.5rem] leading-[1.05] md:text-[3.5rem] lg:text-[4rem] font-bold tracking-tight text-[var(--color-primary)]">
-              Marketing for tradies —{" "}
+              We don&apos;t just bring leads.{" "}
               <span className="text-[var(--color-action)]">
-                run by AI, backed by data
+                We win them, keep them, and run the ops behind it all.
               </span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-relaxed text-[var(--color-muted-foreground)] md:text-xl">
-              Done-for-you Local SEO, Google Ads, lead-generating websites, and
-              AI follow-up. Book more jobs — without relying on word of mouth.
+              Marketing, AI follow-up, customer retention and smooth admin —
+              wired together as one running machine. So you book more jobs,
+              keep more customers, and stay on top of what you actually want
+              to be doing.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/audit">
@@ -300,7 +278,7 @@ export default function ServicesPage() {
               </Link>
               <Link href="/playbooks">
                 <Button variant="secondary" size="lg">
-                  Or grab a playbook first
+                  Or grab a free playbook
                 </Button>
               </Link>
             </div>
@@ -315,31 +293,19 @@ export default function ServicesPage() {
       >
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 text-sm text-[var(--color-secondary)]">
-            <div className="flex items-center gap-2">
-              <Star
-                className="h-4 w-4 fill-[var(--color-action)] text-[var(--color-action)]"
-                aria-hidden="true"
-              />
-              <span className="font-semibold">5.0 Google rating</span>
-            </div>
+            <span className="font-semibold">Australian team</span>
             <span className="text-[var(--color-border)]">•</span>
-            <span>
-              <strong className="text-[var(--color-primary)]">120+</strong>{" "}
-              Australian tradies
-            </span>
-            <span className="text-[var(--color-border)]">•</span>
-            <span>
-              <strong className="text-[var(--color-primary)]">$2.4M+</strong> in
-              jobs booked
-            </span>
+            <span className="font-semibold">Immigrant founder</span>
             <span className="text-[var(--color-border)]">•</span>
             <div className="flex items-center gap-2">
               <ShieldCheck
                 className="h-4 w-4 text-[var(--color-action)]"
                 aria-hidden="true"
               />
-              <span className="font-semibold">10 leads in 60 days, guaranteed</span>
+              <span className="font-semibold">No lock-in contracts</span>
             </div>
+            <span className="text-[var(--color-border)]">•</span>
+            <span className="font-semibold">You own everything we build</span>
           </div>
         </div>
       </section>
@@ -376,16 +342,16 @@ export default function ServicesPage() {
           <p className="mt-8 text-[var(--color-muted-foreground)]">
             You&apos;re not the problem. The system you&apos;re running is.{" "}
             <Link
-              href="/playbooks"
+              href="/audit"
               className="font-semibold text-[var(--color-primary)] underline-offset-2 hover:text-[var(--color-action)] hover:underline"
             >
-              See how plumbers fix this →
+              Book a free audit and we&apos;ll show you what&apos;s leaking →
             </Link>
           </p>
         </div>
       </section>
 
-      {/* 4. THE 4 SERVICES */}
+      {/* 4. THE 4 PARTS */}
       <section
         aria-labelledby="services-heading"
         className="bg-[var(--color-surface)] py-20 md:py-28"
@@ -393,25 +359,25 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-action)]">
-              What we build for you
+              The whole system
             </p>
             <h2
               id="services-heading"
               className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
             >
-              Four services. One AI-driven system.
+              Four parts. One running business.
             </h2>
             <p className="mt-4 text-[var(--color-muted-foreground)]">
-              Each one stands alone. Together, they fill your diary on
-              autopilot. Most tradies start with two and add the rest as they
-              scale.
+              Each part stands alone. Wired together, they fill your diary,
+              keep customers loyal and stop your evenings disappearing. Take
+              all four, or just the bit that&apos;s broken.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {services.map((service) => (
               <article
-                key={service.slug}
+                key={service.title}
                 className="rounded-2xl border border-[var(--color-border)] bg-white p-7 transition-shadow hover:shadow-md"
               >
                 <div className="mb-5 flex items-start gap-4">
@@ -432,7 +398,7 @@ export default function ServicesPage() {
                   {service.benefit}
                 </p>
 
-                <ul className="mb-6 space-y-2">
+                <ul className="space-y-2">
                   {service.outcomes.map((o) => (
                     <li
                       key={o}
@@ -446,14 +412,6 @@ export default function ServicesPage() {
                     </li>
                   ))}
                 </ul>
-
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="inline-flex items-center gap-1 text-sm font-semibold text-[var(--color-primary)] hover:text-[var(--color-action)]"
-                >
-                  Learn more
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </Link>
               </article>
             ))}
           </div>
@@ -486,7 +444,8 @@ export default function ServicesPage() {
               What makes ClickSmith different.
             </h2>
             <p className="mt-4 text-white/70">
-              Three things 14 other Aussie tradie agencies aren&apos;t doing.
+              Three things every other agency you&apos;ve been pitched by
+              isn&apos;t doing.
             </p>
           </div>
 
@@ -515,16 +474,17 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-action)]">
-              Our process
+              How we work
             </p>
             <h2
               id="process-heading"
               className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
             >
-              How we work with tradies.
+              Four steps. No fluff.
             </h2>
             <p className="mt-4 text-[var(--color-muted-foreground)]">
-              Simple. Transparent. Focused on results. No long contracts.
+              No 90-minute pitch calls. No 80-page strategy decks. No
+              lock-ins.
             </p>
           </div>
 
@@ -566,8 +526,8 @@ export default function ServicesPage() {
           </h2>
           <p className="mt-4 text-[var(--color-muted-foreground)]">
             That&apos;s less than one missed job for most trades. Final number
-            depends on which services you run, your service area, and ad spend.
-            We build the exact plan in the free audit.
+            depends on which parts you take, your service area, and ad spend.
+            We work out the exact plan in the free audit.
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -579,7 +539,7 @@ export default function ServicesPage() {
                 $2k–$4k <span className="text-base font-normal text-[var(--color-muted-foreground)]">/month</span>
               </p>
               <p className="mt-2 text-sm text-[var(--color-muted-foreground)]">
-                We run the whole thing — campaigns, automation, content, reporting.
+                We run the whole loop — marketing, follow-up, retention, admin. Or just the part you need.
               </p>
             </div>
             <div className="rounded-2xl border border-[var(--color-action)] bg-white p-6 text-left ring-2 ring-[var(--color-action)]/20">
@@ -598,10 +558,10 @@ export default function ServicesPage() {
                 DIY
               </p>
               <p className="mt-2 text-2xl font-bold text-[var(--color-primary)]">
-                from $49
+                Free
               </p>
               <p className="mt-2 text-sm text-[var(--color-muted-foreground)]">
-                Buy a playbook. Same systems, written step-by-step, run it yourself.
+                Take the playbooks, run them yourself. Free while we&apos;re early.
               </p>
             </div>
           </div>
@@ -617,9 +577,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 8. GUARANTEE BANNER */}
+      {/* 8. HONEST EARLY-DAYS BANNER */}
       <section
-        aria-label="Performance guarantee"
+        aria-label="Honest early-days commitment"
         className="bg-[var(--color-action)] py-12 text-[var(--color-on-action)]"
       >
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 px-6 md:flex-row lg:px-8">
@@ -627,10 +587,11 @@ export default function ServicesPage() {
             <ShieldCheck className="h-12 w-12 shrink-0" aria-hidden="true" />
             <div>
               <h3 className="text-xl font-bold tracking-tight">
-                10 qualified leads in 60 days. Or we work for free.
+                Month-to-month. You own everything.
               </h3>
               <p className="mt-1 text-sm text-white/90">
-                No fine print. No 90-minute exit calls. We only succeed when you do.
+                If we&apos;re not earning the retainer, you walk and keep
+                every site, account, workflow and asset we built.
               </p>
             </div>
           </div>
@@ -642,55 +603,34 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 9. SOCIAL PROOF */}
+      {/* 9. EARLY-DAYS NOTE */}
       <section
         aria-labelledby="proof-heading"
         className="bg-[var(--color-background)] py-20 md:py-28"
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-action)]">
-              What tradies say
-            </p>
-            <h2
-              id="proof-heading"
-              className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
-            >
-              Real tradies. Real numbers.
-            </h2>
-          </div>
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure
-                key={t.name}
-                className="rounded-2xl border border-[var(--color-border)] bg-white p-6"
-              >
-                <div className="mb-4 flex items-center gap-1">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-[var(--color-action)] text-[var(--color-action)]"
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <blockquote className="text-[var(--color-primary)] leading-relaxed">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-5 border-t border-[var(--color-border)] pt-4">
-                  <div className="font-semibold text-[var(--color-primary)]">
-                    {t.name}
-                  </div>
-                  <div className="text-sm text-[var(--color-muted-foreground)]">
-                    {t.trade} · {t.suburb}
-                  </div>
-                  <div className="mt-2 inline-block rounded-full bg-[var(--color-action)]/10 px-3 py-1 text-xs font-bold text-[var(--color-action-strong)]">
-                    {t.result}
-                  </div>
-                </figcaption>
-              </figure>
-            ))}
+        <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
+          <p className="text-sm font-semibold uppercase tracking-wider text-[var(--color-action)]">
+            Real numbers, no fluff
+          </p>
+          <h2
+            id="proof-heading"
+            className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
+          >
+            We&apos;re early. Here&apos;s the work so far.
+          </h2>
+          <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
+            We&apos;d rather show you one real result than ten dressed-up
+            ones. Our first wave of clients are just starting to hit their
+            stride — see the home page for the case study so far, and the
+            next ones are coming as they&apos;re earned.
+          </p>
+          <div className="mt-8">
+            <Link href="/#case-studies">
+              <Button variant="secondary" size="lg">
+                See the case study
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -709,7 +649,7 @@ export default function ServicesPage() {
               id="services-faq-heading"
               className="mt-3 text-3xl font-bold tracking-tight text-[var(--color-primary)] md:text-4xl"
             >
-              Tradie marketing services FAQ.
+              Tradie services FAQ.
             </h2>
             <p className="mt-4 text-[var(--color-muted-foreground)]">
               Got more? Book a free audit and ask us directly.
@@ -748,11 +688,12 @@ export default function ServicesPage() {
             id="final-cta-heading"
             className="text-3xl font-bold tracking-tight md:text-5xl"
           >
-            Ready to fill the diary?
+            Ready to stop running the whole show on your own?
           </h2>
           <p className="mt-6 text-lg leading-relaxed text-white/80 md:text-xl">
-            Book a free 30-minute Diary Audit. We review your current marketing,
-            find what&apos;s leaking, tell you exactly what to do next.{" "}
+            Book a free 30-minute audit. We pull up your numbers, show you
+            where leads, customers and hours are leaking, and tell you
+            exactly what it&apos;d take to plug each one.{" "}
             <span className="text-white/60">
               No pitch. No 90-minute webinar. No sales team.
             </span>
@@ -766,7 +707,7 @@ export default function ServicesPage() {
             </Link>
             <Link href="/playbooks">
               <Button variant="secondary" size="lg" className="!border-white !text-white !bg-transparent hover:!bg-white hover:!text-[var(--color-primary)]">
-                Grab a playbook
+                Grab a free playbook
               </Button>
             </Link>
           </div>
@@ -774,7 +715,7 @@ export default function ServicesPage() {
             <Phone className="h-4 w-4" aria-hidden="true" />
             Or call us:{" "}
             <a
-              href={`tel:${siteConfig.contact.phone}`}
+              href={"tel:" + siteConfig.contact.phone}
               className="font-semibold text-[var(--color-action)] hover:underline"
             >
               {siteConfig.contact.phoneDisplay}
