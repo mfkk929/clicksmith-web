@@ -6,105 +6,75 @@ import {
   FileText,
   Mail,
   Sparkles,
-  Download,
-  Lock,
   Star,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Marketing Playbooks for Australian Tradies | ClickSmith",
+  title: "Free Playbooks for Australian Tradies | ClickSmith",
   description:
-    "Step-by-step marketing playbooks built from what works in real Aussie tradie businesses. Lead generation, GBP, Google Ads, AI automation. Pay once, lifetime updates, instant download.",
-  alternates: { canonical: `${siteConfig.url}/playbooks` },
+    "Step-by-step playbooks for marketing, AI lead follow-up, customer retention and admin — built for Australian tradies. Free while we're early. No email-wall, no upsell.",
+  alternates: { canonical: siteConfig.url + "/playbooks" },
   openGraph: {
-    title: "Marketing Playbooks for Australian Tradies | ClickSmith",
+    title: "Free Playbooks for Australian Tradies | ClickSmith",
     description:
-      "Step-by-step marketing playbooks for Aussie tradies. Pay once, instant PDF download.",
-    url: `${siteConfig.url}/playbooks`,
+      "Step-by-step playbooks for tradies — marketing, AI follow-up, retention and admin. Free while we're early.",
+    url: siteConfig.url + "/playbooks",
     siteName: siteConfig.name,
     type: "website",
   },
 };
 
-/**
- * Playbook checkout links.
- * Replace each `buyUrl` below with a real Stripe Payment Link from your
- * Stripe dashboard (Products → Payment Links). Stripe will handle checkout
- * and you can configure the success page to deliver the PDF automatically.
- *
- * Until real links are set, you can also drop them into env vars:
- *   NEXT_PUBLIC_BUY_LEAD_ENGINE
- *   NEXT_PUBLIC_BUY_GBP
- *   NEXT_PUBLIC_BUY_ADS
- *   NEXT_PUBLIC_BUY_AI
- */
 const playbooks = [
   {
-    badge: "Most popular",
-    title: "The Tradie's Lead Engine",
+    badge: "Start here",
+    title: "The Whole-Loop Playbook",
     summary:
-      "The complete framework: customer avatar, channel mix, GBP optimisation, and the missed-call recovery system. The one to start with.",
+      "The master one. How tradies actually win in 2026 — bring the right work in, win the lead, keep the customer, get referred. Channel mix, follow-up cadence, and the missed-call recovery system.",
     inside: [
       "How tradies actually win work in 2026",
-      "Pick your 2 best channels (and ignore the rest)",
-      "GBP weekly routine (30 minutes, locked-in compounding)",
+      "Picking your 2 best channels (and ignoring the rest)",
+      "The 60-second lead reply system",
       "Missed-call SMS recovery (with copy-paste scripts)",
     ],
     pages: "60+ pages",
-    price: "$79",
-    buyUrl:
-      process.env.NEXT_PUBLIC_BUY_LEAD_ENGINE ??
-      "https://buy.stripe.com/REPLACE_LEAD_ENGINE",
   },
   {
     title: "Google Business Profile Domination",
     summary:
-      "The single biggest lever in most trades. Categories, photos, posts, Q&A, review velocity — the full GBP optimisation routine.",
+      "The single biggest free lever in most trades. Categories, photos, posts, Q&A, review velocity — the full GBP routine. 30 minutes a week, compounds for years.",
     inside: [
       "Top-3 Local Pack ranking factors (in order)",
       "GBP weekly content calendar",
-      "Review velocity system (5-10x in 6 months)",
+      "Review velocity system (5–10× in 6 months)",
       "Suburb-page strategy that compounds",
     ],
     pages: "32 pages",
-    price: "$49",
-    buyUrl:
-      process.env.NEXT_PUBLIC_BUY_GBP ??
-      "https://buy.stripe.com/REPLACE_GBP",
   },
   {
-    title: "Google Ads + LSA for Tradies",
+    title: "Win Every Lead — AI Follow-Up",
     summary:
-      "Why Google Ads beats Facebook for emergency trades, how Local Services Ads change the maths, and the bidding mistakes to avoid.",
+      "Stop losing leads to slow follow-up. The exact AI replies, quote drafts and chase cadence we install for paying clients — explained step-by-step, no tech background needed.",
     inside: [
-      "Search-intent vs awareness — when to use what",
-      "LSA setup + qualification process",
-      "Negative keyword discipline (saves 20-40%)",
-      "Call tracking + dayparting fundamentals",
-    ],
-    pages: "24 pages",
-    price: "$49",
-    buyUrl:
-      process.env.NEXT_PUBLIC_BUY_ADS ??
-      "https://buy.stripe.com/REPLACE_ADS",
-  },
-  {
-    title: "AI + Automation for Tradies",
-    summary:
-      "Missed-call SMS recovery, quote-speed automation, recurring-treatment email engines. The tools that pay for themselves in weeks.",
-    inside: [
-      "Missed-call SMS auto-reply (full setup guide)",
-      "Quote-speed automation (under 5 min response)",
-      "Recurring-treatment email engine",
-      "AI-assisted review responses",
+      "60-second auto-reply (template + scripts)",
+      "Same-day quote drafting workflow",
+      "48hr / 7-day / 14-day chase cadence",
+      "Booking sync without the back-and-forth",
     ],
     pages: "28 pages",
-    price: "$49",
-    buyUrl:
-      process.env.NEXT_PUBLIC_BUY_AI ??
-      "https://buy.stripe.com/REPLACE_AI",
+  },
+  {
+    title: "Keep Every Customer — Retention & Referrals",
+    summary:
+      "Most tradies do the job and never speak to that customer again. That's where the money goes. Reviews, repeat work, seasonal nudges, referral loops — the back half of the funnel nobody talks about.",
+    inside: [
+      "Auto Google review request after every job",
+      "Maintenance reminders that bring repeat work",
+      "Seasonal campaigns to your customer list",
+      "Referral loops that bring their mates in",
+    ],
+    pages: "24 pages",
   },
 ];
 
@@ -118,10 +88,13 @@ export default function PlaybooksPage() {
         "@type": "ListItem",
         position: 2,
         name: "Playbooks",
-        item: `${siteConfig.url}/playbooks`,
+        item: siteConfig.url + "/playbooks",
       },
     ],
   };
+
+  const requestUrl = (title: string) =>
+    "mailto:" + siteConfig.contact.email + "?subject=" + encodeURIComponent("Free playbook request: " + title) + "&body=" + encodeURIComponent("Hi Furqan,\n\nCan you send me the \"" + title + "\" playbook?\n\nName:\nTrade:\nSuburb:\n\nThanks.");
 
   return (
     <>
@@ -130,7 +103,7 @@ export default function PlaybooksPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
       />
 
-      {/* HERO — centered */}
+      {/* HERO */}
       <section
         aria-labelledby="hero-title"
         className="bg-[var(--color-background)] py-20 md:py-28"
@@ -147,23 +120,24 @@ export default function PlaybooksPage() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-[var(--color-action)]/10 px-4 py-2 text-sm font-semibold text-[var(--color-action)]">
               <FileText className="h-4 w-4" />
-              Pay once · Lifetime updates
+              Free while we&apos;re early · No email-wall
             </div>
             <h1
               id="hero-title"
               className="text-4xl font-bold leading-[1.05] tracking-tight text-[var(--color-primary)] md:text-5xl lg:text-6xl"
             >
-              The marketing playbooks tradies actually use to fill the calendar.
+              The playbooks tradies actually use to fill the calendar — free.
             </h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-muted-foreground)] md:text-xl">
               Step-by-step PDFs built from what&apos;s working in real Aussie
-              tradie businesses. No theory, no fluff — copy-paste scripts,
-              checklists, and routines you can run this week.
+              tradie businesses. Marketing, AI follow-up, customer retention,
+              admin — the whole loop. No theory, no fluff, no upsell. Free
+              while we&apos;re building the brand.
             </p>
 
             <ul className="mx-auto mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-[var(--color-primary)]">
               {[
-                "Instant PDF download",
+                "Free PDF — no card needed",
                 "No follow-up sales calls",
                 "Real screenshots + scripts",
                 "Built for AU trades specifically",
@@ -192,9 +166,8 @@ export default function PlaybooksPage() {
               The library
             </h2>
             <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-              Pick the one that solves the problem you&apos;re losing the most
-              money to right now. Then ignore the others until you&apos;ve
-              shipped the first one.
+              Start with the master playbook, then grab whichever one solves
+              the problem you&apos;re losing the most money to right now.
             </p>
           </div>
 
@@ -238,23 +211,19 @@ export default function PlaybooksPage() {
                   </ul>
                 </div>
 
-                {/* Price + buy CTA */}
                 <div className="mt-6 flex flex-1 flex-col justify-end">
                   <div className="mb-4 flex items-baseline justify-between border-t border-[var(--color-border)] pt-5">
                     <span className="text-xs font-semibold uppercase tracking-wide text-[var(--color-muted-foreground)]">
-                      One-time
+                      Cost
                     </span>
                     <span className="font-display text-3xl font-bold tabular-nums text-[var(--color-primary)]">
-                      {p.price}
-                      <span className="ml-1 text-sm font-medium text-[var(--color-muted-foreground)]">
-                        AUD
-                      </span>
+                      Free
                     </span>
                   </div>
-                  <a href={p.buyUrl}>
+                  <a href={requestUrl(p.title)}>
                     <Button variant="action" size="lg" className="w-full">
-                      <Download className="mr-2 h-4 w-4" />
-                      Buy now — {p.price}
+                      <Mail className="mr-2 h-4 w-4" />
+                      Email me this playbook
                     </Button>
                   </a>
                 </div>
@@ -263,9 +232,8 @@ export default function PlaybooksPage() {
           </div>
 
           <p className="mt-10 text-center text-sm text-[var(--color-muted-foreground)]">
-            <Lock className="mb-0.5 mr-1 inline h-3.5 w-3.5" />
-            Secure checkout via Stripe. Instant PDF download after payment.
-            Free lifetime updates.
+            Email goes straight to Furqan. He sends the PDF back within a day.
+            No newsletter sign-up, no auto-drip sequence, no sales call.
           </p>
         </div>
       </section>
@@ -291,16 +259,15 @@ export default function PlaybooksPage() {
             </p>
             <p>
               We update them when something changes. When Google rolls out a
-              new GBP feature, we update the GBP playbook. When LSA pricing
-              shifts, we update the Ads playbook. Buy once and every future
-              version lands in your inbox automatically.
+              new GBP feature, we update the GBP playbook. When AI tools
+              improve, we update the follow-up playbook. Grab one now and the
+              future versions land in your inbox automatically.
             </p>
             <p className="text-[var(--color-primary)]">
-              <strong>Why charge for them?</strong> Free guides get
-              skim-read and forgotten. Paying a small amount means you&apos;ll
-              actually open the PDF, run the checklist, and get the result —
-              and it lets us keep updating them forever instead of writing
-              once and walking away.
+              <strong>Why free?</strong> We&apos;re early. Building a brand
+              beats charging $49 right now. If the playbook helps and you want
+              it done for you, we&apos;re here. If you&apos;d rather run it
+              yourself — that&apos;s genuinely fine.
             </p>
           </div>
         </div>
@@ -321,9 +288,9 @@ export default function PlaybooksPage() {
                 Want it specific to your trade?
               </h2>
               <p className="mt-4 text-lg text-[var(--color-muted-foreground)]">
-                Each of our 12 trade pages has a tailored playbook with
-                channel mix, seasonal calendar, and 90-day milestones built
-                for that trade specifically.
+                Each of our 12 trade pages has a tailored version with channel
+                mix, seasonal calendar, and 90-day milestones built for that
+                trade specifically.
               </p>
               <div className="mt-8">
                 <Link href="/trades">
@@ -342,13 +309,13 @@ export default function PlaybooksPage() {
                 </span>
               </div>
               <p className="mt-4 text-xl font-bold text-[var(--color-primary)]">
-                Book a free audit and get 50% off the playbook tailored to
-                your trade.
+                Book a free audit and we&apos;ll send the trade-specific
+                playbook with it.
               </p>
               <p className="mt-3 text-sm text-[var(--color-muted-foreground)]">
                 You&apos;ll get more from the 30 minutes if you&apos;ve
-                already read the fundamentals — so we knock half off when you
-                book.
+                already read the fundamentals — so we send the trade-tailored
+                playbook ahead of the call.
               </p>
             </div>
           </div>
@@ -369,8 +336,8 @@ export default function PlaybooksPage() {
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-lg text-[var(--color-on-primary)]/80">
             Free 30-minute call. We pull up your numbers, tell you
-            what&apos;s costing you the most leads, and show you exactly
-            which playbook fits your situation. No pitch on the call.
+            what&apos;s leaking, and show you exactly which playbook fits
+            your situation. No pitch on the call.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-4">
             <Link href="/audit">
@@ -380,7 +347,7 @@ export default function PlaybooksPage() {
               </Button>
             </Link>
             <a
-              href={`mailto:${siteConfig.contact.email}?subject=Playbook%20question`}
+              href={"mailto:" + siteConfig.contact.email + "?subject=Playbook%20question"}
             >
               <Button variant="secondary" size="lg">
                 <Mail className="mr-2 h-4 w-4" />
